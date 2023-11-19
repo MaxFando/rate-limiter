@@ -2,8 +2,6 @@ package bucket
 
 import (
 	"context"
-	"errors"
-
 	"github.com/MaxFando/rate-limiter/pkg/tracing"
 )
 
@@ -22,19 +20,12 @@ func NewUseCase(bucketService Service) *UseCase {
 	return &UseCase{bucketService: bucketService}
 }
 
-func (a *UseCase) Reset(ctx context.Context, login, ip string) (bool, error) {
+func (a *UseCase) Reset(ctx context.Context, login, ip string) (bool, bool, error) {
 	span, ctx := tracing.CreateChildSpanWithFuncName(ctx)
 	defer span.Finish()
 
 	isLoginReset := a.bucketService.ResetLoginBucket(ctx, login)
-	if !isLoginReset {
-		return false, errors.New("login bucket not reset")
-	}
-
 	isIpReset := a.bucketService.ResetIpBucket(ctx, ip)
-	if !isIpReset {
-		return false, errors.New("ip bucket not reset")
-	}
 
-	return true, nil
+	return isLoginReset, isIpReset, nil
 }

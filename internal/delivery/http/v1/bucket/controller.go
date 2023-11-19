@@ -31,10 +31,10 @@ func (ctr *Controller) ResetBucket(c echo.Context) error {
 		return echo.NewHTTPError(422, err.Error())
 	}
 
-	_, err := ctr.uc.Reset(ctx, request.Login, request.Ip)
+	isLoginReset, isIpReset, err := ctr.uc.Reset(ctx, request.Login, request.Ip)
 	if err != nil {
 		return echo.NewHTTPError(500, err.Error())
 	}
 
-	return c.JSON(200, map[string]interface{}{"status": "ok"})
+	return c.JSON(200, map[string]bool{"ok": isLoginReset && isIpReset})
 }

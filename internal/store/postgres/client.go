@@ -3,13 +3,15 @@ package postgres
 import (
 	"context"
 	"fmt"
-	"github.com/MaxFando/rate-limiter/internal/config"
-	"github.com/MaxFando/rate-limiter/internal/store/postgres/plugins/logger"
-	"github.com/MaxFando/rate-limiter/pkg/utils"
+	"time"
+
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	gormLogger "gorm.io/gorm/logger"
-	"time"
+
+	"github.com/MaxFando/rate-limiter/internal/config"
+	"github.com/MaxFando/rate-limiter/internal/store/postgres/plugins/logger"
+	"github.com/MaxFando/rate-limiter/pkg/utils"
 )
 
 type Client struct {

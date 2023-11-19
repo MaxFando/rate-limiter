@@ -1,9 +1,10 @@
 package blacklist
 
 import (
+	"github.com/labstack/echo/v4"
+
 	"github.com/MaxFando/rate-limiter/internal/domain/network"
 	"github.com/MaxFando/rate-limiter/internal/usecase/blacklist"
-	"github.com/labstack/echo/v4"
 )
 
 type Controller struct {
@@ -33,8 +34,12 @@ func (ctr *Controller) AddIP(c echo.Context) error {
 		return c.JSON(422, map[string]interface{}{"ok": false, "error": err.Error()})
 	}
 
-	payload := network.IpNetwork{Ip: request.Ip, Mask: request.Mask}
-	err := ctr.uc.AddIP(ctx, payload)
+	payload, err := network.NewIpNetwork(request.Ip, request.Mask)
+	if err != nil {
+		return c.JSON(500, map[string]interface{}{"ok": false, "error": err.Error()})
+	}
+
+	err = ctr.uc.AddIP(ctx, payload)
 	if err != nil {
 		return c.JSON(500, map[string]interface{}{"ok": false, "error": err.Error()})
 	}
@@ -59,8 +64,12 @@ func (ctr *Controller) RemoveIP(c echo.Context) error {
 		return c.JSON(422, map[string]interface{}{"ok": false, "error": err.Error()})
 	}
 
-	payload := network.IpNetwork{Ip: request.Ip, Mask: request.Mask}
-	err := ctr.uc.RemoveIP(ctx, payload)
+	payload, err := network.NewIpNetwork(request.Ip, request.Mask)
+	if err != nil {
+		return c.JSON(500, map[string]interface{}{"ok": false, "error": err.Error()})
+	}
+
+	err = ctr.uc.RemoveIP(ctx, payload)
 	if err != nil {
 		return c.JSON(500, map[string]interface{}{"ok": false, "error": err.Error()})
 	}

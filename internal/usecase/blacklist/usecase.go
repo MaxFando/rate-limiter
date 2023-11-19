@@ -2,6 +2,7 @@ package blacklist
 
 import (
 	"context"
+
 	"github.com/MaxFando/rate-limiter/internal/domain/network"
 	"github.com/MaxFando/rate-limiter/pkg/tracing"
 )

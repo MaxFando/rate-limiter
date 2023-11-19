@@ -52,6 +52,3 @@ linters-settings:
     # функция помечается длинной если она больше 120 строк кода либо больше 50 операций
     lines: 120
     statements: 50
-
-issues:
-  new-from-rev: HEAD

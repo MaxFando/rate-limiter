@@ -3,17 +3,19 @@ package main
 import (
 	"context"
 	"fmt"
+	"os"
+	"os/signal"
+	"syscall"
+
+	"github.com/spf13/viper"
+	"go.uber.org/zap"
+
 	"github.com/MaxFando/rate-limiter/internal/app/http"
 	"github.com/MaxFando/rate-limiter/internal/config"
 	"github.com/MaxFando/rate-limiter/internal/providers"
 	"github.com/MaxFando/rate-limiter/internal/store/postgres"
 	"github.com/MaxFando/rate-limiter/pkg/tracing"
 	"github.com/MaxFando/rate-limiter/pkg/utils"
-	"github.com/spf13/viper"
-	"go.uber.org/zap"
-	"os"
-	"os/signal"
-	"syscall"
 )
 
 func main() {

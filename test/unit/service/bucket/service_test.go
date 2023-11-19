@@ -2,13 +2,15 @@ package bucket
 
 import (
 	"context"
+	"os"
+	"testing"
+
+	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/mock"
+
 	"github.com/MaxFando/rate-limiter/internal/service/bucket"
 	mocks "github.com/MaxFando/rate-limiter/mocks/service/bucket"
 	"github.com/MaxFando/rate-limiter/pkg/utils"
-	"github.com/stretchr/testify/assert"
-	"github.com/stretchr/testify/mock"
-	"os"
-	"testing"
 )
 
 var (
@@ -16,6 +18,8 @@ var (
 	mockLoginBucketRepo    *mocks.Repository
 	mockPasswordBucketRepo *mocks.Repository
 )
+
+const keyLogin = "login"
 
 func TestMain(m *testing.M) {
 	utils.InitializeLogger()
@@ -29,12 +33,11 @@ func TestService_TryGetPermissionInLoginBucket(t *testing.T) {
 		mockIpBucketRepo = new(mocks.Repository)
 		mockPasswordBucketRepo = new(mocks.Repository)
 
-		key := "login"
 		limit := 10
-		mockLoginBucketRepo.On("TryGetPermissionInBucket", mock.Anything, key, limit).Return(true)
+		mockLoginBucketRepo.On("TryGetPermissionInBucket", mock.Anything, keyLogin, limit).Return(true)
 		s := bucket.NewService(mockIpBucketRepo, mockLoginBucketRepo, mockPasswordBucketRepo)
 
-		allow := s.TryGetPermissionInLoginBucket(context.TODO(), key, limit)
+		allow := s.TryGetPermissionInLoginBucket(context.TODO(), keyLogin, limit)
 		assert.True(t, allow)
 	})
 }
@@ -44,6 +47,10 @@ func TestService_TryGetPermissionInPasswordBucket(t *testing.T) {
 		mockLoginBucketRepo = new(mocks.Repository)
 		mockIpBucketRepo = new(mocks.Repository)
 		mockPasswordBucketRepo = new(mocks.Repository)
+
+		mockLoginBucketRepo.On("DeleteUnusedBucket", mock.Anything)
+		mockIpBucketRepo.On("DeleteUnusedBucket", mock.Anything)
+		mockPasswordBucketRepo.On("DeleteUnusedBucket", mock.Anything)
 
 		key := "password"
 		limit := 10
@@ -65,12 +72,10 @@ func TestService_ResetLoginBucket(t *testing.T) {
 		mockIpBucketRepo.On("DeleteUnusedBucket", mock.Anything)
 		mockPasswordBucketRepo.On("DeleteUnusedBucket", mock.Anything)
 
-		key := "login"
-
-		mockLoginBucketRepo.On("ResetBucket", mock.Anything, key).Return(true)
+		mockLoginBucketRepo.On("ResetBucket", mock.Anything, keyLogin).Return(true)
 		s := bucket.NewService(mockIpBucketRepo, mockLoginBucketRepo, mockPasswordBucketRepo)
 
-		allow := s.ResetLoginBucket(context.TODO(), key)
+		allow := s.ResetLoginBucket(context.TODO(), keyLogin)
 		assert.True(t, allow)
 	})
 }
@@ -85,12 +90,10 @@ func TestService_ResetIpBucket(t *testing.T) {
 		mockIpBucketRepo.On("DeleteUnusedBucket", mock.Anything)
 		mockPasswordBucketRepo.On("DeleteUnusedBucket", mock.Anything)
 
-		key := "login"
-
-		mockIpBucketRepo.On("ResetBucket", mock.Anything, key).Return(true)
+		mockIpBucketRepo.On("ResetBucket", mock.Anything, keyLogin).Return(true)
 		s := bucket.NewService(mockIpBucketRepo, mockLoginBucketRepo, mockPasswordBucketRepo)
 
-		allow := s.ResetIpBucket(context.TODO(), key)
+		allow := s.ResetIpBucket(context.TODO(), keyLogin)
 		assert.True(t, allow)
 	})
 }

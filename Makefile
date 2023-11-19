@@ -35,6 +35,9 @@ cover:
 lint:
 	golangci-lint run -c .golangci.yaml
 
+lint-fix:
+	golangci-lint run -v -c .golangci.yaml --fix ./...
+
 mock:
 	@echo "Generating mocks..."
 	rm -rf internal/mocks

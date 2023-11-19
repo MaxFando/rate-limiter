@@ -2,6 +2,7 @@ package auth
 
 import (
 	"context"
+
 	"github.com/MaxFando/rate-limiter/internal/config"
 	"github.com/MaxFando/rate-limiter/internal/domain/network"
 	"github.com/MaxFando/rate-limiter/internal/service/blacklist"
@@ -30,7 +31,7 @@ func (uc *UseCase) TryAuthorization(ctx context.Context, request network.Request
 	if err != nil {
 		return false, err
 	}
-	isIpInBlackList, err := uc.checkIpByNetworkList(ctx, request.Ip, ipNetworkList)
+	isIpInBlackList, err := uc.checkIpByNetworkList(ctx, request.Ip.String(), ipNetworkList)
 	if err != nil {
 		return false, err
 	}
@@ -43,7 +44,7 @@ func (uc *UseCase) TryAuthorization(ctx context.Context, request network.Request
 	if err != nil {
 		return false, err
 	}
-	isIpInWhiteList, err := uc.checkIpByNetworkList(ctx, request.Ip, ipNetworkList)
+	isIpInWhiteList, err := uc.checkIpByNetworkList(ctx, request.Ip.String(), ipNetworkList)
 	if err != nil {
 		return false, err
 	}
@@ -53,7 +54,7 @@ func (uc *UseCase) TryAuthorization(ctx context.Context, request network.Request
 
 	utils.Logger.Info("Check ip in bucketService")
 	isAllow := true
-	allow := uc.bucketService.TryGetPermissionInLoginBucket(ctx, request.Ip, config.Config.Bucket.IpLimit)
+	allow := uc.bucketService.TryGetPermissionInLoginBucket(ctx, request.Ip.String(), config.Config.Bucket.IpLimit)
 	if !allow {
 		isAllow = allow
 	}
@@ -78,12 +79,12 @@ func (uc *UseCase) checkIpByNetworkList(ctx context.Context, ip string, ipNetwor
 	defer span.Finish()
 
 	for i := range ipNetworkList {
-		prefix, err := utils.GetPrefix(ip, ipNetworkList[i].Mask)
+		prefix, err := utils.GetPrefix(ip, ipNetworkList[i].Mask.String())
 		if err != nil {
 			return false, err
 		}
 
-		if prefix == ipNetworkList[i].Ip {
+		if prefix == ipNetworkList[i].Ip.String() {
 			return true, nil
 		}
 	}

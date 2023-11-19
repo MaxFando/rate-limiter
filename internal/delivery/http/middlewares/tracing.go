@@ -3,12 +3,14 @@ package middlewares
 import (
 	"context"
 	"fmt"
-	"github.com/MaxFando/rate-limiter/pkg/tracing"
-	"github.com/MaxFando/rate-limiter/pkg/utils"
+	"time"
+
 	"github.com/labstack/echo/v4"
 	"github.com/uber/jaeger-client-go"
 	"go.uber.org/zap"
-	"time"
+
+	"github.com/MaxFando/rate-limiter/pkg/tracing"
+	"github.com/MaxFando/rate-limiter/pkg/utils"
 )
 
 func LoggerMiddleware(next echo.HandlerFunc) echo.HandlerFunc {

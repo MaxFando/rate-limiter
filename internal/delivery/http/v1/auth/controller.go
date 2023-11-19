@@ -1,9 +1,10 @@
 package auth
 
 import (
+	"github.com/labstack/echo/v4"
+
 	"github.com/MaxFando/rate-limiter/internal/domain/network"
 	"github.com/MaxFando/rate-limiter/internal/usecase/auth"
-	"github.com/labstack/echo/v4"
 )
 
 type Controller struct {
@@ -34,7 +35,11 @@ func (ctr *Controller) TryAuthorization(c echo.Context) error {
 		return c.JSON(422, map[string]interface{}{"ok": false, "error": err.Error()})
 	}
 
-	payload := network.Request{Login: request.Login, Password: request.Password, Ip: request.Ip}
+	payload, err := network.NewRequest(request.Login, request.Password, request.Ip)
+	if err != nil {
+		return c.JSON(500, map[string]interface{}{"ok": false, "error": err.Error()})
+	}
+
 	allow, err := ctr.uc.TryAuthorization(ctx, payload)
 	if err != nil {
 		return c.JSON(500, map[string]interface{}{"ok": false, "error": err.Error()})

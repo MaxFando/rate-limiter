@@ -1,8 +1,9 @@
 package bucket
 
 import (
-	"github.com/MaxFando/rate-limiter/internal/usecase/bucket"
 	"github.com/labstack/echo/v4"
+
+	"github.com/MaxFando/rate-limiter/internal/usecase/bucket"
 )
 
 type Controller struct {

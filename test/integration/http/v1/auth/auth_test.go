@@ -2,19 +2,21 @@ package auth
 
 import (
 	"context"
+	"net/http"
+	"net/http/httptest"
+	"os"
+	"strings"
+	"testing"
+
+	"github.com/labstack/echo/v4"
+	"github.com/stretchr/testify/assert"
+
 	"github.com/MaxFando/rate-limiter/internal/config"
 	"github.com/MaxFando/rate-limiter/internal/delivery/http/v1/auth"
 	"github.com/MaxFando/rate-limiter/internal/providers"
 	"github.com/MaxFando/rate-limiter/internal/store/postgres"
 	authUC "github.com/MaxFando/rate-limiter/internal/usecase/auth"
 	"github.com/MaxFando/rate-limiter/pkg/utils"
-	"github.com/labstack/echo/v4"
-	"github.com/stretchr/testify/assert"
-	"net/http"
-	"net/http/httptest"
-	"os"
-	"strings"
-	"testing"
 )
 
 var authControllerV1 *auth.Controller

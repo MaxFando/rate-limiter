@@ -2,6 +2,10 @@ package http
 
 import (
 	"context"
+
+	"github.com/labstack/echo-contrib/echoprometheus"
+	"github.com/labstack/echo/v4"
+
 	"github.com/MaxFando/rate-limiter/internal/delivery/http/v1/auth"
 	"github.com/MaxFando/rate-limiter/internal/delivery/http/v1/blacklist"
 	"github.com/MaxFando/rate-limiter/internal/delivery/http/v1/bucket"
@@ -11,8 +15,6 @@ import (
 	blacklistUC "github.com/MaxFando/rate-limiter/internal/usecase/blacklist"
 	bucketUC "github.com/MaxFando/rate-limiter/internal/usecase/bucket"
 	whiteListUC "github.com/MaxFando/rate-limiter/internal/usecase/whitelist"
-	"github.com/labstack/echo-contrib/echoprometheus"
-	"github.com/labstack/echo/v4"
 )
 
 func NewRouter(ctx context.Context, handler *echo.Echo) *echo.Echo {

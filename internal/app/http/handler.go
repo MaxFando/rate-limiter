@@ -2,10 +2,12 @@ package http
 
 import (
 	"context"
-	"github.com/MaxFando/rate-limiter/internal/delivery/http"
-	"github.com/MaxFando/rate-limiter/internal/delivery/http/middlewares"
+
 	validator "github.com/go-playground/validator/v10"
 	echo "github.com/labstack/echo/v4"
+
+	"github.com/MaxFando/rate-limiter/internal/delivery/http"
+	"github.com/MaxFando/rate-limiter/internal/delivery/http/middlewares"
 )
 
 type customValidator struct {

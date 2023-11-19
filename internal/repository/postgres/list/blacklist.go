@@ -3,6 +3,7 @@ package list
 import (
 	"context"
 	"fmt"
+
 	"github.com/MaxFando/rate-limiter/internal/domain/network"
 	"github.com/MaxFando/rate-limiter/internal/store/postgres"
 )

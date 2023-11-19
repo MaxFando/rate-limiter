@@ -2,8 +2,9 @@ package inmemory
 
 import (
 	"context"
-	"github.com/MaxFando/rate-limiter/internal/service/ratelimiter"
 	"sync"
+
+	"github.com/MaxFando/rate-limiter/internal/service/ratelimiter"
 )
 
 type Store struct {

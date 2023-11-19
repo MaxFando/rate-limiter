@@ -3,6 +3,7 @@ package bucket
 import (
 	"context"
 	"errors"
+
 	"github.com/MaxFando/rate-limiter/pkg/tracing"
 )
 

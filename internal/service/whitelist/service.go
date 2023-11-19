@@ -2,6 +2,7 @@ package whitelist
 
 import (
 	"context"
+
 	"github.com/MaxFando/rate-limiter/internal/domain/network"
 	"github.com/MaxFando/rate-limiter/pkg/tracing"
 	"github.com/MaxFando/rate-limiter/pkg/utils"
@@ -25,11 +26,11 @@ func (s *Service) AddIP(ctx context.Context, network network.IpNetwork) error {
 	span, ctx := tracing.CreateChildSpanWithFuncName(ctx)
 	defer span.Finish()
 
-	prefix, err := utils.GetPrefix(network.Ip, network.Mask)
+	prefix, err := utils.GetPrefix(network.Ip.String(), network.Mask.String())
 	if err != nil {
 		return err
 	}
-	err = s.store.Add(ctx, prefix, network.Mask)
+	err = s.store.Add(ctx, prefix, network.Mask.String())
 	if err != nil {
 		return err
 	}
@@ -40,11 +41,11 @@ func (s *Service) RemoveIP(ctx context.Context, network network.IpNetwork) error
 	span, ctx := tracing.CreateChildSpanWithFuncName(ctx)
 	defer span.Finish()
 
-	prefix, err := utils.GetPrefix(network.Ip, network.Mask)
+	prefix, err := utils.GetPrefix(network.Ip.String(), network.Mask.String())
 	if err != nil {
 		return err
 	}
-	err = s.store.Remove(ctx, prefix, network.Mask)
+	err = s.store.Remove(ctx, prefix, network.Mask.String())
 	if err != nil {
 		return err
 	}

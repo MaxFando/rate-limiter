@@ -1,0 +1,644 @@
+{
+  "id" : 1,
+  "name" : "Анти-брутфорс",
+  "description" : "Description",
+  "lastModifiedDate" : "2023-11-19T12:24:43Z",
+  "properties" : {
+    "structurizr.dsl" : "d29ya3NwYWNlICLQkNC90YLQuC3QsdGA0YPRgtGE0L7RgNGBIiB7CiAgICAhZG9jcyBkb2NzCgogICAgbW9kZWwgewogICAgICAgIEFudGlCcnV0ZWZvcmNlID0gc29mdHdhcmVTeXN0ZW0gItCQ0L3RgtC4LdCx0YDRg9GC0YTQvtGA0YEiICLQodC10YDQstC40YEg0L/RgNC10LTQvdCw0LfQvdCw0YfQtdC9INC00LvRjyDQsdC+0YDRjNCx0Ysg0YEg0L/QvtC00LHQvtGA0L7QvCDQv9Cw0YDQvtC70LXQuSDQv9GA0Lgg0LDQstGC0L7RgNC40LfQsNGG0LjQuCDQsiDQutCw0LrQvtC5LdC70LjQsdC+INGB0LjRgdGC0LXQvNC1LiIKICAgICAgICBJbk1lbW9yeUNhY2hlID0gc29mdHdhcmVTeXN0ZW0gIkluIG1lbW9yeSBEQiIgIiIgIkRhdGFiYXNlIgogICAgICAgIFBvc3RncmVTUUwgPSBzb2Z0d2FyZVN5c3RlbSAiUG9zdGdyZVNRTCBEYXRhYmFzZSIgIiIgIkRhdGFiYXNlIgoKICAgICAgICBDbGllbnQgPSBzb2Z0d2FyZVN5c3RlbSAiQ2xpZW50IiAiIiAiRXh0ZXJuYWwgU3lzdGVtIgoKICAgICAgICBSYXRlTGltaXRlciA9IHNvZnR3YXJlU3lzdGVtICJSYXRlIExpbWl0ZXIiICIiICJJbnRlcm5hbCBTeXN0ZW0iIHsKICAgICAgICAgICAgQVBJID0gY29udGFpbmVyICJBUEkgUmF0ZSBMaW1pdGVyIiAiR28iICJDb250YWluZXIiIHsKICAgICAgICAgICAgICAgIEF1dGhDb250cm9sbGVyID0gY29tcG9uZW50ICJBdXRoQ29udHJvbGxlciIgIiIgIkdvIiAiQ29tcG9uZW50IgogICAgICAgICAgICAgICAgQmxhY2tsaXN0Q29udHJvbGxlciA9IGNvbXBvbmVudCAiQmxhY2tsaXN0Q29udHJvbGxlciIgIiIgIkdvIiAiQ29tcG9uZW50IgogICAgICAgICAgICAgICAgV2hpdGVMaXN0Q29udHJvbGxlciA9IGNvbXBvbmVudCAiV2hpdGVMaXN0Q29udHJvbGxlciIgIiIgIkdvIiAiQ29tcG9uZW50IgogICAgICAgICAgICAgICAgQnVja2V0Q29udHJvbGxlciA9IGNvbXBvbmVudCAiQnVja2V0Q29udHJvbGxlciIgIiIgIkdvIiAiQ29tcG9uZW50IgoKICAgICAgICAgICAgICAgIEF1dGhVc2VDYXNlID0gY29tcG9uZW50ICJBdXRoVXNlQ2FzZSIgIiIgIkdvIiAiQ29tcG9uZW50LFVzZUNhc2UiCiAgICAgICAgICAgICAgICBCbGFja2xpc3RoVXNlQ2FzZSA9IGNvbXBvbmVudCAiQmxhY2tsaXN0aFVzZUNhc2UiICIiICJHbyIgIkNvbXBvbmVudCxVc2VDYXNlIgogICAgICAgICAgICAgICAgV2hpdGVMaXN0VXNlQ2FzZSA9IGNvbXBvbmVudCAiV2hpdGVMaXN0VXNlQ2FzZSIgIiIgIkdvIiAiQ29tcG9uZW50LFVzZUNhc2UiCiAgICAgICAgICAgICAgICBCdWNrZXRVc2VDYXNlID0gY29tcG9uZW50ICJCdWNrZXRVc2VDYXNlIiAiIiAiR28iICJDb21wb25lbnQsVXNlQ2FzZSIKCiAgICAgICAgICAgICAgICBSYXRlTGltaXRlclNlcnZpY2UgPSBjb21wb25lbnQgIlJhdGVMaW1pdGVyU2VydmljZSIgIiIgIkdvIiAiQ29tcG9lbmVudCxTZXJ2aWNlIgogICAgICAgICAgICAgICAgQmxhY2tsaXN0aFNlcnZpY2UgPSBjb21wb25lbnQgIkJsYWNrbGlzdGhTZXJ2aWNlIiAiIiAiR28iICJDb21wb25lbnQsU2VydmljZSIKICAgICAgICAgICAgICAgIFdoaXRlTGlzdFNlcnZpY2UgPSBjb21wb25lbnQgIldoaXRlTGlzdFNlcnZpY2UiICIiICJHbyIgIkNvbXBvbmVudCxTZXJ2aWNlIgogICAgICAgICAgICAgICAgQnVja2V0U2VydmljZSA9IGNvbXBvbmVudCAiQnVja2V0U2VydmljZSIgIiIgIkdvIiAiQ29tcG9uZW50LFNlcnZpY2UiCgogICAgICAgICAgICAgICAgTGlzdFJlcG9zaXRvcnkgPSBjb21wb25lbnQgIkxpc3RSZXBvc2l0b3J5IiAiIiAiR28iICJDb21wb2VuZW50LFJlcG9zaXRvcnkiCgogICAgICAgICAgICAgICAgQnVja2V0UmVwb3NpdG9yeSA9IGNvbXBvbmVudCAiQnVja2V0UmVwb3NpdG9yeSIgIiIgIkdvIiAiQ29tcG9lbmVudCxSZXBvc2l0b3J5IgogICAgICAgICAgICAgICAgSXBCdWNrZXRSZXBvc2l0b3J5ID0gY29tcG9uZW50ICJJcEJ1Y2tldFJlcG9zaXRvcnkiICIiICJHbyIgIkNvbXBvZW5lbnQsUmVwb3NpdG9yeSIKICAgICAgICAgICAgICAgIExvZ2luQnVja2V0UmVwbyA9IGNvbXBvbmVudCAiTG9naW5CdWNrZXRSZXBvIiAiIiAiR28iICJDb21wb2VuZW50LFJlcG9zaXRvcnkiCiAgICAgICAgICAgICAgICBQYXNzd29yZEJ1Y2tldFJlcG8gPSBjb21wb25lbnQgIlBhc3N3b3JkQnVja2V0UmVwbyIgIiIgIkdvIiAiQ29tcG9lbmVudCxSZXBvc2l0b3J5IgogICAgICAgICAgICB9CiAgICAgICAgfQoKICAgICAgICBDbGllbnQgLT4gUmF0ZUxpbWl0ZXIgIiIgIkpTT04vSFRUUCIKCiAgICAgICAgQXV0aENvbnRyb2xsZXIgLT4gQXV0aFVzZUNhc2UgIlVzZSIKICAgICAgICBCbGFja2xpc3RDb250cm9sbGVyIC0+IEJsYWNrbGlzdGhVc2VDYXNlICJVc2UiCiAgICAgICAgV2hpdGVMaXN0Q29udHJvbGxlciAtPiBXaGl0ZUxpc3RVc2VDYXNlICJVc2UiCiAgICAgICAgQnVja2V0Q29udHJvbGxlciAtPiBCdWNrZXRVc2VDYXNlICJVc2UiCgogICAgICAgIEF1dGhVc2VDYXNlIC0+IEJsYWNrbGlzdGhTZXJ2aWNlICJVc2UiCiAgICAgICAgQXV0aFVzZUNhc2UgLT4gV2hpdGVMaXN0U2VydmljZSAiVXNlIgogICAgICAgIEF1dGhVc2VDYXNlIC0+IEJ1Y2tldFNlcnZpY2UgIlVzZSIKCiAgICAgICAgQmxhY2tsaXN0aFVzZUNhc2UgLT4gQmxhY2tsaXN0aFNlcnZpY2UgIlVzZSIKICAgICAgICBXaGl0ZUxpc3RVc2VDYXNlIC0+IFdoaXRlTGlzdFNlcnZpY2UgIlVzZSIKICAgICAgICBCdWNrZXRVc2VDYXNlIC0+IEJ1Y2tldFNlcnZpY2UgIlVzZSIKCiAgICAgICAgQmxhY2tsaXN0aFNlcnZpY2UgLT4gTGlzdFJlcG9zaXRvcnkgIlVzZSIKICAgICAgICBXaGl0ZUxpc3RTZXJ2aWNlIC0+IExpc3RSZXBvc2l0b3J5ICJVc2UiCgogICAgICAgIEJ1Y2tldFNlcnZpY2UgLT4gSXBCdWNrZXRSZXBvc2l0b3J5ICJVc2UiCiAgICAgICAgQnVja2V0U2VydmljZSAtPiBMb2dpbkJ1Y2tldFJlcG8gIlVzZSIKICAgICAgICBCdWNrZXRTZXJ2aWNlIC0+IFBhc3N3b3JkQnVja2V0UmVwbyAiVXNlIgoKICAgICAgICBJcEJ1Y2tldFJlcG9zaXRvcnkgLT4gQnVja2V0UmVwb3NpdG9yeSAiVXNlIgogICAgICAgIExvZ2luQnVja2V0UmVwbyAtPiBCdWNrZXRSZXBvc2l0b3J5ICJVc2UiCiAgICAgICAgUGFzc3dvcmRCdWNrZXRSZXBvIC0+IEJ1Y2tldFJlcG9zaXRvcnkgIlVzZSIKCiAgICAgICAgQnVja2V0UmVwb3NpdG9yeSAtPiBJbk1lbW9yeUNhY2hlICJVc2UiCiAgICAgICAgTGlzdFJlcG9zaXRvcnkgLT4gUG9zdGdyZVNRTCAiVXNlIgogICAgfQoKICAgIHZpZXdzIHsKICAgICAgICBjb21wb25lbnQgQVBJICJPdmVydmlldyIgewogICAgICAgICAgICBpbmNsdWRlICoKICAgICAgICAgICAgYXV0b0xheW91dAogICAgICAgIH0KCiAgICAgICAgdGhlbWUgZGVmYXVsdAogICAgICAgIHN0eWxlcyB7CiAgICAgICAgICAgIGVsZW1lbnQgIkVsZW1lbnQiIHsKICAgICAgICAgICAgICAgIHNoYXBlIFJvdW5kZWRCb3gKICAgICAgICAgICAgfQogICAgICAgICAgICBlbGVtZW50ICJQZXJzb24iIHsKICAgICAgICAgICAgICAgIHNoYXBlIFBlcnNvbgogICAgICAgICAgICB9CiAgICAgICAgICAgIGVsZW1lbnQgIkV4dGVybmFsIFN5c3RlbSIgewogICAgICAgICAgICAgICAgYmFja2dyb3VuZCAjOTk5OTk5CiAgICAgICAgICAgICAgICBjb2xvciAjMDAwMDAwCiAgICAgICAgICAgIH0KICAgICAgICAgICAgZWxlbWVudCAiUmVkaXMiIHsKICAgICAgICAgICAgICAgIGJhY2tncm91bmQgIzFhYmM5YwogICAgICAgICAgICAgICAgY29sb3IgI2ZmZmZmZgogICAgICAgICAgICB9CiAgICAgICAgICAgIGVsZW1lbnQgIkludGVybmFsIFN5c3RlbSIgewogICAgICAgICAgICAgICAgYmFja2dyb3VuZCAjNjYwMGNjCiAgICAgICAgICAgICAgICBjb2xvciAjZmZmZmZmCiAgICAgICAgICAgIH0KICAgICAgICAgICAgZWxlbWVudCAiU29mdHdhcmUgU3lzdGVtIiB7CiAgICAgICAgICAgICAgICBiYWNrZ3JvdW5kICMxMTY4YmQKICAgICAgICAgICAgICAgIGNvbG9yICNmZmZmZmYKICAgICAgICAgICAgfQogICAgICAgICAgICBlbGVtZW50ICJDb250YWluZXIiIHsKICAgICAgICAgICAgICAgIGJhY2tncm91bmQgIzQzOGRkNQogICAgICAgICAgICAgICAgY29sb3IgI2ZmZmZmZgogICAgICAgICAgICB9CiAgICAgICAgICAgIGVsZW1lbnQgIkNvbXBvbmVudCIgewogICAgICAgICAgICAgICAgYmFja2dyb3VuZCAjODViYmYwCiAgICAgICAgICAgICAgICBjb2xvciAjMDAwMDAwCiAgICAgICAgICAgIH0KICAgICAgICAgICAgZWxlbWVudCAiRGF0YWJhc2UiIHsKICAgICAgICAgICAgICAgIHNoYXBlIEN5bGluZGVyCiAgICAgICAgICAgIH0KICAgICAgICAgICAgZWxlbWVudCAiS2Fma2EiIHsKICAgICAgICAgICAgICAgIHNoYXBlIFBpcGUKICAgICAgICAgICAgfQogICAgICAgIH0KICAgIH0KfQoK"
+  },
+  "configuration" : { },
+  "model" : {
+    "softwareSystems" : [ {
+      "id" : "1",
+      "tags" : "Element,Software System",
+      "properties" : {
+        "structurizr.dsl.identifier" : "antibruteforce"
+      },
+      "name" : "Анти-брутфорс",
+      "description" : "Сервис предназначен для борьбы с подбором паролей при авторизации в какой-либо системе.",
+      "location" : "Unspecified",
+      "documentation" : { }
+    }, {
+      "id" : "2",
+      "tags" : "Element,Software System,Database",
+      "properties" : {
+        "structurizr.dsl.identifier" : "inmemorycache"
+      },
+      "name" : "In memory DB",
+      "location" : "Unspecified",
+      "documentation" : { }
+    }, {
+      "id" : "3",
+      "tags" : "Element,Software System,Database",
+      "properties" : {
+        "structurizr.dsl.identifier" : "postgresql"
+      },
+      "name" : "PostgreSQL Database",
+      "location" : "Unspecified",
+      "documentation" : { }
+    }, {
+      "id" : "4",
+      "tags" : "Element,Software System,External System",
+      "properties" : {
+        "structurizr.dsl.identifier" : "client"
+      },
+      "name" : "Client",
+      "relationships" : [ {
+        "id" : "24",
+        "tags" : "Relationship",
+        "properties" : {
+          "structurizr.dsl.identifier" : "19c41c4a-49ee-45f4-8578-73e03c777069"
+        },
+        "sourceId" : "4",
+        "destinationId" : "5",
+        "technology" : "JSON/HTTP"
+      } ],
+      "location" : "Unspecified",
+      "documentation" : { }
+    }, {
+      "id" : "5",
+      "tags" : "Element,Software System,Internal System",
+      "properties" : {
+        "structurizr.dsl.identifier" : "ratelimiter"
+      },
+      "name" : "Rate Limiter",
+      "relationships" : [ {
+        "id" : "45",
+        "sourceId" : "5",
+        "destinationId" : "2",
+        "description" : "Use",
+        "linkedRelationshipId" : "43"
+      }, {
+        "id" : "48",
+        "sourceId" : "5",
+        "destinationId" : "3",
+        "description" : "Use",
+        "linkedRelationshipId" : "46"
+      } ],
+      "location" : "Unspecified",
+      "containers" : [ {
+        "id" : "6",
+        "tags" : "Element,Container",
+        "properties" : {
+          "structurizr.dsl.identifier" : "api"
+        },
+        "name" : "API Rate Limiter",
+        "description" : "Go",
+        "relationships" : [ {
+          "id" : "44",
+          "sourceId" : "6",
+          "destinationId" : "2",
+          "description" : "Use",
+          "linkedRelationshipId" : "43"
+        }, {
+          "id" : "47",
+          "sourceId" : "6",
+          "destinationId" : "3",
+          "description" : "Use",
+          "linkedRelationshipId" : "46"
+        } ],
+        "technology" : "Container",
+        "components" : [ {
+          "id" : "22",
+          "tags" : "Element,Component,Compoenent,Repository",
+          "properties" : {
+            "structurizr.dsl.identifier" : "loginbucketrepo"
+          },
+          "name" : "LoginBucketRepo",
+          "relationships" : [ {
+            "id" : "41",
+            "tags" : "Relationship",
+            "properties" : {
+              "structurizr.dsl.identifier" : "9f13f8ce-8e54-486b-953e-d4cd2e5042be"
+            },
+            "sourceId" : "22",
+            "destinationId" : "20",
+            "description" : "Use"
+          } ],
+          "technology" : "Go",
+          "documentation" : { }
+        }, {
+          "id" : "19",
+          "tags" : "Element,Component,Compoenent,Repository",
+          "properties" : {
+            "structurizr.dsl.identifier" : "listrepository"
+          },
+          "name" : "ListRepository",
+          "relationships" : [ {
+            "id" : "46",
+            "tags" : "Relationship",
+            "properties" : {
+              "structurizr.dsl.identifier" : "5f2cf3a9-4c54-481d-913b-50aba784d143"
+            },
+            "sourceId" : "19",
+            "destinationId" : "3",
+            "description" : "Use"
+          } ],
+          "technology" : "Go",
+          "documentation" : { }
+        }, {
+          "id" : "16",
+          "tags" : "Element,Component,Service",
+          "properties" : {
+            "structurizr.dsl.identifier" : "blacklisthservice"
+          },
+          "name" : "BlacklisthService",
+          "relationships" : [ {
+            "id" : "35",
+            "tags" : "Relationship",
+            "properties" : {
+              "structurizr.dsl.identifier" : "f37b6efd-5224-4ad4-a1b3-920c6edd9c9b"
+            },
+            "sourceId" : "16",
+            "destinationId" : "19",
+            "description" : "Use"
+          } ],
+          "technology" : "Go",
+          "documentation" : { }
+        }, {
+          "id" : "14",
+          "tags" : "Element,Component,UseCase",
+          "properties" : {
+            "structurizr.dsl.identifier" : "bucketusecase"
+          },
+          "name" : "BucketUseCase",
+          "relationships" : [ {
+            "id" : "34",
+            "tags" : "Relationship",
+            "properties" : {
+              "structurizr.dsl.identifier" : "7fa6ea89-d65f-4f39-9259-7d486ddb0d76"
+            },
+            "sourceId" : "14",
+            "destinationId" : "18",
+            "description" : "Use"
+          } ],
+          "technology" : "Go",
+          "documentation" : { }
+        }, {
+          "id" : "23",
+          "tags" : "Element,Component,Compoenent,Repository",
+          "properties" : {
+            "structurizr.dsl.identifier" : "passwordbucketrepo"
+          },
+          "name" : "PasswordBucketRepo",
+          "relationships" : [ {
+            "id" : "42",
+            "tags" : "Relationship",
+            "properties" : {
+              "structurizr.dsl.identifier" : "3d1b9e41-7a43-4df0-b4ae-b29df7d348ec"
+            },
+            "sourceId" : "23",
+            "destinationId" : "20",
+            "description" : "Use"
+          } ],
+          "technology" : "Go",
+          "documentation" : { }
+        }, {
+          "id" : "15",
+          "tags" : "Element,Component,Compoenent,Service",
+          "properties" : {
+            "structurizr.dsl.identifier" : "ratelimiterservice"
+          },
+          "name" : "RateLimiterService",
+          "technology" : "Go",
+          "documentation" : { }
+        }, {
+          "id" : "8",
+          "tags" : "Element,Component",
+          "properties" : {
+            "structurizr.dsl.identifier" : "blacklistcontroller"
+          },
+          "name" : "BlacklistController",
+          "relationships" : [ {
+            "id" : "26",
+            "tags" : "Relationship",
+            "properties" : {
+              "structurizr.dsl.identifier" : "375a2e1f-3b42-4c1c-9aec-bb76bf647c60"
+            },
+            "sourceId" : "8",
+            "destinationId" : "12",
+            "description" : "Use"
+          } ],
+          "technology" : "Go",
+          "documentation" : { }
+        }, {
+          "id" : "9",
+          "tags" : "Element,Component",
+          "properties" : {
+            "structurizr.dsl.identifier" : "whitelistcontroller"
+          },
+          "name" : "WhiteListController",
+          "relationships" : [ {
+            "id" : "27",
+            "tags" : "Relationship",
+            "properties" : {
+              "structurizr.dsl.identifier" : "f44fa417-b0dd-462f-be0e-b13ef5db85a0"
+            },
+            "sourceId" : "9",
+            "destinationId" : "13",
+            "description" : "Use"
+          } ],
+          "technology" : "Go",
+          "documentation" : { }
+        }, {
+          "id" : "13",
+          "tags" : "Element,Component,UseCase",
+          "properties" : {
+            "structurizr.dsl.identifier" : "whitelistusecase"
+          },
+          "name" : "WhiteListUseCase",
+          "relationships" : [ {
+            "id" : "33",
+            "tags" : "Relationship",
+            "properties" : {
+              "structurizr.dsl.identifier" : "745cc756-91c0-434f-bf15-c0b6ccaaf694"
+            },
+            "sourceId" : "13",
+            "destinationId" : "17",
+            "description" : "Use"
+          } ],
+          "technology" : "Go",
+          "documentation" : { }
+        }, {
+          "id" : "18",
+          "tags" : "Element,Component,Service",
+          "properties" : {
+            "structurizr.dsl.identifier" : "bucketservice"
+          },
+          "name" : "BucketService",
+          "relationships" : [ {
+            "id" : "37",
+            "tags" : "Relationship",
+            "properties" : {
+              "structurizr.dsl.identifier" : "ecb36cd4-9528-405e-8c18-44afa8f13584"
+            },
+            "sourceId" : "18",
+            "destinationId" : "21",
+            "description" : "Use"
+          }, {
+            "id" : "38",
+            "tags" : "Relationship",
+            "properties" : {
+              "structurizr.dsl.identifier" : "78766b19-5d49-4530-bb49-dd1ae84f86fa"
+            },
+            "sourceId" : "18",
+            "destinationId" : "22",
+            "description" : "Use"
+          }, {
+            "id" : "39",
+            "tags" : "Relationship",
+            "properties" : {
+              "structurizr.dsl.identifier" : "7fe4b45a-8294-452f-824d-d244a7810390"
+            },
+            "sourceId" : "18",
+            "destinationId" : "23",
+            "description" : "Use"
+          } ],
+          "technology" : "Go",
+          "documentation" : { }
+        }, {
+          "id" : "11",
+          "tags" : "Element,Component,UseCase",
+          "properties" : {
+            "structurizr.dsl.identifier" : "authusecase"
+          },
+          "name" : "AuthUseCase",
+          "relationships" : [ {
+            "id" : "29",
+            "tags" : "Relationship",
+            "properties" : {
+              "structurizr.dsl.identifier" : "33b305d4-2b4f-4600-a3aa-7e0dfd9d987a"
+            },
+            "sourceId" : "11",
+            "destinationId" : "16",
+            "description" : "Use"
+          }, {
+            "id" : "30",
+            "tags" : "Relationship",
+            "properties" : {
+              "structurizr.dsl.identifier" : "3efab260-455b-47af-bd20-9e107a4c3d93"
+            },
+            "sourceId" : "11",
+            "destinationId" : "17",
+            "description" : "Use"
+          }, {
+            "id" : "31",
+            "tags" : "Relationship",
+            "properties" : {
+              "structurizr.dsl.identifier" : "23d51ca4-8e7f-4c62-89b7-29a987d7bb2a"
+            },
+            "sourceId" : "11",
+            "destinationId" : "18",
+            "description" : "Use"
+          } ],
+          "technology" : "Go",
+          "documentation" : { }
+        }, {
+          "id" : "12",
+          "tags" : "Element,Component,UseCase",
+          "properties" : {
+            "structurizr.dsl.identifier" : "blacklisthusecase"
+          },
+          "name" : "BlacklisthUseCase",
+          "relationships" : [ {
+            "id" : "32",
+            "tags" : "Relationship",
+            "properties" : {
+              "structurizr.dsl.identifier" : "c494676f-7bfa-4bb7-95f3-0da1a568649b"
+            },
+            "sourceId" : "12",
+            "destinationId" : "16",
+            "description" : "Use"
+          } ],
+          "technology" : "Go",
+          "documentation" : { }
+        }, {
+          "id" : "7",
+          "tags" : "Element,Component",
+          "properties" : {
+            "structurizr.dsl.identifier" : "authcontroller"
+          },
+          "name" : "AuthController",
+          "relationships" : [ {
+            "id" : "25",
+            "tags" : "Relationship",
+            "properties" : {
+              "structurizr.dsl.identifier" : "ca4374c4-ef8c-4d54-a678-8bf79d476acc"
+            },
+            "sourceId" : "7",
+            "destinationId" : "11",
+            "description" : "Use"
+          } ],
+          "technology" : "Go",
+          "documentation" : { }
+        }, {
+          "id" : "17",
+          "tags" : "Element,Component,Service",
+          "properties" : {
+            "structurizr.dsl.identifier" : "whitelistservice"
+          },
+          "name" : "WhiteListService",
+          "relationships" : [ {
+            "id" : "36",
+            "tags" : "Relationship",
+            "properties" : {
+              "structurizr.dsl.identifier" : "73a04864-10ad-42cf-bee3-f427dec0f3cb"
+            },
+            "sourceId" : "17",
+            "destinationId" : "19",
+            "description" : "Use"
+          } ],
+          "technology" : "Go",
+          "documentation" : { }
+        }, {
+          "id" : "10",
+          "tags" : "Element,Component",
+          "properties" : {
+            "structurizr.dsl.identifier" : "bucketcontroller"
+          },
+          "name" : "BucketController",
+          "relationships" : [ {
+            "id" : "28",
+            "tags" : "Relationship",
+            "properties" : {
+              "structurizr.dsl.identifier" : "1063372b-4817-499a-b0e7-114d73d5d0c9"
+            },
+            "sourceId" : "10",
+            "destinationId" : "14",
+            "description" : "Use"
+          } ],
+          "technology" : "Go",
+          "documentation" : { }
+        }, {
+          "id" : "20",
+          "tags" : "Element,Component,Compoenent,Repository",
+          "properties" : {
+            "structurizr.dsl.identifier" : "bucketrepository"
+          },
+          "name" : "BucketRepository",
+          "relationships" : [ {
+            "id" : "43",
+            "tags" : "Relationship",
+            "properties" : {
+              "structurizr.dsl.identifier" : "2e36b6bc-f8d6-4fb0-b485-dce84ee334ad"
+            },
+            "sourceId" : "20",
+            "destinationId" : "2",
+            "description" : "Use"
+          } ],
+          "technology" : "Go",
+          "documentation" : { }
+        }, {
+          "id" : "21",
+          "tags" : "Element,Component,Compoenent,Repository",
+          "properties" : {
+            "structurizr.dsl.identifier" : "ipbucketrepository"
+          },
+          "name" : "IpBucketRepository",
+          "relationships" : [ {
+            "id" : "40",
+            "tags" : "Relationship",
+            "properties" : {
+              "structurizr.dsl.identifier" : "4eef31a9-78fc-4746-9a6d-e897f82e274d"
+            },
+            "sourceId" : "21",
+            "destinationId" : "20",
+            "description" : "Use"
+          } ],
+          "technology" : "Go",
+          "documentation" : { }
+        } ],
+        "documentation" : { }
+      } ],
+      "documentation" : { }
+    } ]
+  },
+  "documentation" : {
+    "sections" : [ {
+      "content" : "# ТЗ на разработку сервиса \"Анти-брутфорс\"\n\n## Общее описание\nСервис предназначен для борьбы с подбором паролей при авторизации в какой-либо системе.\n\nСервис вызывается перед авторизацией пользователя и может либо разрешить, либо заблокировать попытку.\n\nПредполагается, что сервис используется только для server-server, т.е. скрыт от конечного пользователя.\n\n## Алгоритм работы\nСервис ограничивает частоту попыток авторизации для различных комбинаций параметров, например:\n* не более N = 10 попыток в минуту для данного логина.\n* не более M = 100 попыток в минуту для данного пароля (защита от обратного brute-force).\n* не более K = 1000 попыток в минуту для данного IP (число большое, т.к. NAT).\n\nДля подсчета и ограничения частоты запросов, можно использовать например алгоритм leaky bucket.\nИли иные аналогичные: https://en.wikipedia.org/wiki/Rate_limiting\n\nПричем сервис будет поддерживать множество bucket-ов, по одному на каждый логин/пароль/ip.\n\nBucket-ы можно хранить:\n* в памяти (в таком случае нужно продумать удаление неактивных bucket-ов, чтобы избежать утечек памяти).\n* во внешнем хранилище (например redis или СУБД, в таком случае нужно продумать производительность).\n\nWhite/black листы содержат списки адресов сетей, которые обрабатываются более простым способом:\n* Если входящий IP в whitelist, то сервис безусловно разрешает авторизацию (ok=true);\n* Если - в blacklist, то отклоняет (ok=false).\n\n## Архитектура\nМикросервис состоит из API, базы данных для хранения настроек и black/white списков.\nОпционально - хранилище для bucket'ов. Сервис должен предоставлять GRPC **или** REST API.\n\n## Описание методов API\n\n### Попытка авторизации\nЗапрос:\n* login\n* password\n* ip\n\nОтвет:\n* ok (true/false) - сервис должен возвращать ok=true, если считает что запрос нормальный\n  и ok=false, если считает что происходит bruteforce.\n\n### Сброс bucket\nДолжен очистить bucket-ы соответствующие переданным login и ip.\n* login\n* ip\n\n### Добавление IP в blacklist\n* подсеть (IP + маска)\n\n### Удаление IP из blacklist\n* подсеть (IP + маска)\n\n### Добавление IP в whitelist\n* подсеть (IP + маска)\n\n### Удаление IP из whitelist\n* подсеть (IP + маска)\n\n### Общая схема проекта\n\n![](embed:Overview)",
+      "format" : "Markdown",
+      "filename" : "description.md",
+      "order" : 1,
+      "title" : ""
+    } ]
+  },
+  "views" : {
+    "componentViews" : [ {
+      "key" : "Overview",
+      "order" : 1,
+      "automaticLayout" : {
+        "implementation" : "Graphviz",
+        "rankDirection" : "TopBottom",
+        "rankSeparation" : 300,
+        "nodeSeparation" : 300,
+        "edgeSeparation" : 0,
+        "vertices" : false
+      },
+      "containerId" : "6",
+      "externalContainerBoundariesVisible" : true,
+      "elements" : [ {
+        "id" : "22",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "11",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "23",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "12",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "13",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "14",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "15",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "16",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "17",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "18",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "19",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "2",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "3",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "7",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "8",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "9",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "20",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "10",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "21",
+        "x" : 0,
+        "y" : 0
+      } ],
+      "relationships" : [ {
+        "id" : "40"
+      }, {
+        "id" : "41"
+      }, {
+        "id" : "42"
+      }, {
+        "id" : "43"
+      }, {
+        "id" : "32"
+      }, {
+        "id" : "31"
+      }, {
+        "id" : "30"
+      }, {
+        "id" : "29"
+      }, {
+        "id" : "28"
+      }, {
+        "id" : "27"
+      }, {
+        "id" : "26"
+      }, {
+        "id" : "37"
+      }, {
+        "id" : "25"
+      }, {
+        "id" : "36"
+      }, {
+        "id" : "35"
+      }, {
+        "id" : "34"
+      }, {
+        "id" : "33"
+      }, {
+        "id" : "46"
+      }, {
+        "id" : "38"
+      }, {
+        "id" : "39"
+      } ]
+    } ],
+    "configuration" : {
+      "branding" : { },
+      "styles" : {
+        "elements" : [ {
+          "tag" : "Element",
+          "shape" : "RoundedBox"
+        }, {
+          "tag" : "Person",
+          "shape" : "Person"
+        }, {
+          "tag" : "External System",
+          "background" : "#999999",
+          "color" : "#000000"
+        }, {
+          "tag" : "Redis",
+          "background" : "#1abc9c",
+          "color" : "#ffffff"
+        }, {
+          "tag" : "Internal System",
+          "background" : "#6600cc",
+          "color" : "#ffffff"
+        }, {
+          "tag" : "Software System",
+          "background" : "#1168bd",
+          "color" : "#ffffff"
+        }, {
+          "tag" : "Container",
+          "background" : "#438dd5",
+          "color" : "#ffffff"
+        }, {
+          "tag" : "Component",
+          "background" : "#85bbf0",
+          "color" : "#000000"
+        }, {
+          "tag" : "Database",
+          "shape" : "Cylinder"
+        }, {
+          "tag" : "Kafka",
+          "shape" : "Pipe"
+        } ]
+      },
+      "themes" : [ "https://static.structurizr.com/themes/default/theme.json" ],
+      "terminology" : { },
+      "lastSavedView" : "Component-001"
+    }
+  }
+}

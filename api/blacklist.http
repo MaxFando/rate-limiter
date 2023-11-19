@@ -1,0 +1,20 @@
+POST localhost/api/v1/auth/blacklist
+Content-Type: application/json
+
+{
+  "ip": "192.1.1.0",
+  "mask": "255.255.255.128"
+}
+
+###
+GET localhost:8080/api/v1/auth/blacklist
+
+###
+DELETE localhost:8080/api/v1/auth/blacklist
+Content-Type: application/json
+
+{
+  "ip": "192.1.1.0",
+  "mask": "255.255.255.128"
+}
+

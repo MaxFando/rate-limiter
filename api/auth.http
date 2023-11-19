@@ -1,0 +1,11 @@
+POST localhost/api/v1/auth
+Content-Type: application/json
+
+{
+  "login": "test",
+  "password": "1234",
+  "ip": "192.1.8.1"
+}
+
+###
+

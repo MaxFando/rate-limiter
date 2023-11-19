@@ -1,0 +1,39 @@
+version: '3.9'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: debug.dockerfile
+    ports:
+      - "80:8080"
+      - "40000:40000"
+    environment:
+      - ENV_VAR=value
+    security_opt:
+      - "seccomp:unconfined"
+    cap_add:
+      - SYS_PTRACE
+    command: "--listen=:40000 --continue --headless=true --api-version=2 --accept-multiclient exec ./app"
+
+  db:
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_DB: "postgres"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+      - ./migrations/000001_init.up.sql:/docker-entrypoint-initdb.d/create_tables.sql
+    ports:
+      - "5432:5432"
+
+  jaeger:
+    image: jaegertracing/all-in-one:latest
+    ports:
+      - "${JAEGER_AGENT_PORT:-16686}:16686"
+      - "${JAEGER_AGENT_PORT_UDP:-6831}:6831/udp"
+
+volumes:
+  db-data:

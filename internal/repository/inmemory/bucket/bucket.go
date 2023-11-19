@@ -2,10 +2,10 @@ package bucket
 
 import (
 	"context"
+	"time"
+
 	"github.com/MaxFando/rate-limiter/internal/service/ratelimiter"
 	"github.com/MaxFando/rate-limiter/internal/store/inmemory"
-	"golang.org/x/time/rate"
-	"time"
 )
 
 type Repository struct {
@@ -50,6 +50,6 @@ func (r *Repository) ResetBucket(ctx context.Context, requestValue string) bool 
 }
 
 func (r *Repository) newBucket(limit int) *ratelimiter.Limiter {
-	limiter := ratelimiter.NewLimiter(rate.Limit(float64(limit)/time.Duration.Seconds(60*time.Second)), limit)
+	limiter := ratelimiter.NewLeakyBucket(time.Duration(60)*time.Second, limit)
 	return limiter
 }

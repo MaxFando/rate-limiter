@@ -1,4 +1,4 @@
-package whitelist
+package blacklist
 
 import (
 	"context"
@@ -10,8 +10,8 @@ import (
 	"github.com/stretchr/testify/mock"
 
 	"github.com/MaxFando/rate-limiter/internal/domain/network"
-	"github.com/MaxFando/rate-limiter/internal/service/whitelist"
-	mocks "github.com/MaxFando/rate-limiter/mocks/service/whitelist"
+	"github.com/MaxFando/rate-limiter/internal/service/blacklist"
+	mocks "github.com/MaxFando/rate-limiter/mocks/service/blacklist"
 	"github.com/MaxFando/rate-limiter/pkg/utils"
 )
 
@@ -28,7 +28,7 @@ func TestMain(m *testing.M) {
 func TestService_AddIP(t *testing.T) {
 	t.Run("success", func(t *testing.T) {
 		mockStore = new(mocks.Store)
-		s := whitelist.NewService(mockStore)
+		s := blacklist.NewService(mockStore)
 
 		payload, _ := network.NewIpNetwork(
 			"192.168.1.1",
@@ -44,7 +44,7 @@ func TestService_AddIP(t *testing.T) {
 
 	t.Run("error", func(t *testing.T) {
 		mockStore = new(mocks.Store)
-		s := whitelist.NewService(mockStore)
+		s := blacklist.NewService(mockStore)
 
 		payload, _ := network.NewIpNetwork(
 			"192.168.1.1",
@@ -52,7 +52,7 @@ func TestService_AddIP(t *testing.T) {
 		)
 		prefix, _ := utils.GetPrefix(payload.Ip.String(), payload.Mask.String())
 
-		errMock := errors.New("test")
+		errMock := errors.New("tests")
 		mockStore.On("Add", mock.Anything, prefix, payload.Mask.String()).Return(errMock)
 
 		err := s.AddIP(context.TODO(), payload)

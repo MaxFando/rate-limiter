@@ -25,12 +25,7 @@ down:
 	@echo "Done!"
 
 test:
-	go test -race ./...
-
-cover:
-	go test -short -count=1 -race -coverprofile=coverage.out ./...
-	go tool cover -func=coverage.out
-	rm 	coverage.out
+	go test -race -count 100 -v ./tests/...
 
 lint:
 	golangci-lint run -c .golangci.yaml

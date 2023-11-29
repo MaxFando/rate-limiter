@@ -1,6 +1,7 @@
 package providers
 
 import (
+	"context"
 	"github.com/MaxFando/rate-limiter/internal/service/blacklist"
 	"github.com/MaxFando/rate-limiter/internal/service/bucket"
 	"github.com/MaxFando/rate-limiter/internal/service/whitelist"
@@ -25,4 +26,6 @@ func (sp *ServiceProvider) RegisterDependencies(repoProvider *RepositoryProvider
 		repoProvider.loginBucketRepo,
 		repoProvider.passwordBucketRepo,
 	)
+
+	sp.BucketService.StartUnusedBucketCleanup(context.Background())
 }

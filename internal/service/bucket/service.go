@@ -21,10 +21,7 @@ func NewService(
 	loginBucketRepo Repository,
 	passwordBucketRepo Repository,
 ) *Service {
-	s := &Service{ipBucketRepo: ipBucketRepo, loginBucketRepo: loginBucketRepo, passwordBucketRepo: passwordBucketRepo}
-	s.deleteUnusedBucket(context.Background())
-
-	return s
+	return &Service{ipBucketRepo: ipBucketRepo, loginBucketRepo: loginBucketRepo, passwordBucketRepo: passwordBucketRepo}
 }
 
 func (s *Service) TryGetPermissionInLoginBucket(ctx context.Context, key string, limit int) bool {
@@ -47,7 +44,7 @@ func (s *Service) ResetIpBucket(ctx context.Context, ip string) bool {
 	return s.ipBucketRepo.ResetBucket(ctx, ip)
 }
 
-func (s *Service) deleteUnusedBucket(ctx context.Context) {
+func (s *Service) StartUnusedBucketCleanup(ctx context.Context) {
 	go s.ipBucketRepo.DeleteUnusedBucket(ctx)
 	go s.loginBucketRepo.DeleteUnusedBucket(ctx)
 	go s.passwordBucketRepo.DeleteUnusedBucket(ctx)

@@ -1,8 +1,8 @@
-package grpc
+package grpcapi
 
 import (
 	"context"
-	"github.com/MaxFando/rate-limiter/internal/delivery/grpc/bucketpb"
+	"github.com/MaxFando/rate-limiter/internal/delivery/grpcapi/bucketpb"
 	"github.com/MaxFando/rate-limiter/internal/usecase/bucket"
 )
 

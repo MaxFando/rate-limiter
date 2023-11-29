@@ -8,7 +8,6 @@ import (
 	"github.com/MaxFando/rate-limiter/internal/service/blacklist"
 	"github.com/MaxFando/rate-limiter/internal/service/bucket"
 	"github.com/MaxFando/rate-limiter/internal/service/whitelist"
-	"github.com/MaxFando/rate-limiter/pkg/tracing"
 	"github.com/MaxFando/rate-limiter/pkg/utils"
 )
 
@@ -23,8 +22,6 @@ func NewUseCase(blackListService *blacklist.Service, whiteListService *whitelist
 }
 
 func (uc *UseCase) TryAuthorization(ctx context.Context, request network.Request) (bool, error) {
-	span, ctx := tracing.CreateChildSpanWithFuncName(ctx)
-	defer span.Finish()
 
 	utils.Logger.Info("Check ip in blacklist")
 	ipNetworkList, err := uc.blackListService.GetIPList(ctx)
@@ -75,8 +72,6 @@ func (uc *UseCase) TryAuthorization(ctx context.Context, request network.Request
 }
 
 func (uc *UseCase) checkIpByNetworkList(ctx context.Context, ip string, ipNetworkList []network.IpNetwork) (bool, error) {
-	span, ctx := tracing.CreateChildSpanWithFuncName(ctx)
-	defer span.Finish()
 
 	for i := range ipNetworkList {
 		prefix, err := utils.GetPrefix(ip, ipNetworkList[i].Mask.String())

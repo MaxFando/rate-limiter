@@ -1,10 +1,14 @@
-package grpc
+package grpcapi
 
 import (
 	"context"
-	"github.com/MaxFando/rate-limiter/internal/delivery/grpc/whitelistpb"
+	"github.com/MaxFando/rate-limiter/internal/delivery/grpcapi/whitelistpb"
 	"github.com/MaxFando/rate-limiter/internal/domain/network"
 	"github.com/MaxFando/rate-limiter/internal/usecase/whitelist"
+	"github.com/MaxFando/rate-limiter/pkg/utils"
+	"go.uber.org/zap"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 )
 
 type WhitelistServer struct {
@@ -12,7 +16,7 @@ type WhitelistServer struct {
 	uc *whitelist.UseCase
 }
 
-func NewWhitelistServer(uc *whitelist.UseCase) *WhitelistServer {
+func NewWhiteListServer(uc *whitelist.UseCase) *WhitelistServer {
 	return &WhitelistServer{uc: uc}
 }
 
@@ -44,19 +48,30 @@ func (s *WhitelistServer) RemoveIp(ctx context.Context, req *whitelistpb.RemoveI
 	return &whitelistpb.RemoveIPResponse{Ok: true}, nil
 }
 
-func (s *WhitelistServer) GetIpList(ctx context.Context, req *whitelistpb.GetIpListRequest) (*whitelistpb.GetIpListResponse, error) {
-	list, err := s.uc.GetIPList(ctx)
+func (s *WhitelistServer) GetIpList(req *whitelistpb.GetIpListRequest, stream whitelistpb.WhiteListService_GetIpListServer) error {
+	list, err := s.uc.GetIPList(context.Background())
 	if err != nil {
-		return nil, err
+		utils.Logger.Error("GetIpList error:", zap.Error(err))
+		return err
 	}
 
 	var ipList []*whitelistpb.IpNetwork
-	for _, network := range list {
+	for _, _network := range list {
 		ipList = append(ipList, &whitelistpb.IpNetwork{
-			Ip:   network.Ip.String(),
-			Mask: network.Mask.String(),
+			Ip:   _network.Ip.String(),
+			Mask: _network.Mask.String(),
 		})
 	}
 
-	return &whitelistpb.GetIpListResponse{IpNetwork: ipList}, nil
+	response := &whitelistpb.GetIpListResponse{
+		IpNetwork: ipList,
+	}
+
+	errStream := stream.Send(response)
+	if errStream != nil {
+		utils.Logger.Error("GetIpList error:", zap.Error(errStream))
+		return status.Errorf(codes.Internal, "unexpected error: %v", errStream)
+	}
+
+	return nil
 }

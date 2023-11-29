@@ -2,8 +2,6 @@ package bucket
 
 import (
 	"context"
-
-	"github.com/MaxFando/rate-limiter/pkg/tracing"
 )
 
 type Repository interface {
@@ -30,29 +28,21 @@ func NewService(
 }
 
 func (s *Service) TryGetPermissionInLoginBucket(ctx context.Context, key string, limit int) bool {
-	span, ctx := tracing.CreateChildSpanWithFuncName(ctx)
-	defer span.Finish()
 
 	return s.loginBucketRepo.TryGetPermissionInBucket(ctx, key, limit)
 }
 
 func (s *Service) TryGetPermissionInPasswordBucket(ctx context.Context, key string, limit int) bool {
-	span, ctx := tracing.CreateChildSpanWithFuncName(ctx)
-	defer span.Finish()
 
 	return s.passwordBucketRepo.TryGetPermissionInBucket(ctx, key, limit)
 }
 
 func (s *Service) ResetLoginBucket(ctx context.Context, login string) bool {
-	span, ctx := tracing.CreateChildSpanWithFuncName(ctx)
-	defer span.Finish()
 
 	return s.loginBucketRepo.ResetBucket(ctx, login)
 }
 
 func (s *Service) ResetIpBucket(ctx context.Context, ip string) bool {
-	span, ctx := tracing.CreateChildSpanWithFuncName(ctx)
-	defer span.Finish()
 
 	return s.ipBucketRepo.ResetBucket(ctx, ip)
 }

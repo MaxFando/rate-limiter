@@ -21,7 +21,7 @@ build:
 
 down:
 	@echo "Stopping docker compose..."
-	$(compose) down
+	$(compose) down -v
 	@echo "Done!"
 
 test:
@@ -55,8 +55,8 @@ migrate.up:
 	migrate -source file://migrations -database postgres://localhost:5432/postgres?sslmode=disable up
 
 proto:
-	protoc --proto_path=internal/delivery/grpc/proto/blacklist internal/delivery/grpc/proto/blacklist/*.proto  --go_out=. --go_opt=paths=import --go-grpc_out=. --go-grpc_opt=paths=import
-	protoc --proto_path=internal/delivery/grpc/proto/whitelist internal/delivery/grpc/proto/whitelist/*.proto  --go_out=. --go_opt=paths=import --go-grpc_out=. --go-grpc_opt=paths=import
-	protoc --proto_path=internal/delivery/grpc/proto/bucket internal/delivery/grpc/proto/bucket/*.proto  --go_out=. --go_opt=paths=import --go-grpc_out=. --go-grpc_opt=paths=import
-	protoc --proto_path=internal/delivery/grpc/proto/auth internal/delivery/grpc/proto/auth/*.proto  --go_out=. --go_opt=paths=import --go-grpc_out=. --go-grpc_opt=paths=import
+	protoc --proto_path=internal/delivery/grpcapi/proto/blacklist internal/delivery/grpcapi/proto/blacklist/*.proto  --go_out=. --go_opt=paths=import --go-grpc_out=. --go-grpc_opt=paths=import
+	protoc --proto_path=internal/delivery/grpcapi/proto/whitelist internal/delivery/grpcapi/proto/whitelist/*.proto  --go_out=. --go_opt=paths=import --go-grpc_out=. --go-grpc_opt=paths=import
+	protoc --proto_path=internal/delivery/grpcapi/proto/bucket internal/delivery/grpcapi/proto/bucket/*.proto  --go_out=. --go_opt=paths=import --go-grpc_out=. --go-grpc_opt=paths=import
+	protoc --proto_path=internal/delivery/grpcapi/proto/auth internal/delivery/grpcapi/proto/auth/*.proto  --go_out=. --go_opt=paths=import --go-grpc_out=. --go-grpc_opt=paths=import
 

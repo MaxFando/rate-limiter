@@ -7,7 +7,6 @@ import (
 	echo "github.com/labstack/echo/v4"
 
 	"github.com/MaxFando/rate-limiter/internal/delivery/http"
-	"github.com/MaxFando/rate-limiter/internal/delivery/http/middlewares"
 )
 
 type customValidator struct {
@@ -28,7 +27,6 @@ func NewHandler(ctx context.Context) *echo.Echo {
 	echoMainServer := echo.New()
 	echoMainServer.Validator = &customValidator{Validator: validator.New()}
 	echoMainServer.Use(curryContextMiddleware(ctx))
-	echoMainServer.Use(middlewares.LoggerMiddleware)
 
 	echoMainServer = http.NewRouter(ctx, echoMainServer)
 

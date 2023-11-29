@@ -1,8 +1,8 @@
-package grpc
+package grpcapi
 
 import (
 	"context"
-	"github.com/MaxFando/rate-limiter/internal/delivery/grpc/authpb"
+	"github.com/MaxFando/rate-limiter/internal/delivery/grpcapi/authpb"
 	"github.com/MaxFando/rate-limiter/internal/domain/network"
 	"github.com/MaxFando/rate-limiter/internal/usecase/auth"
 	"github.com/MaxFando/rate-limiter/pkg/utils"

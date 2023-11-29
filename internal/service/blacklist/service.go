@@ -4,7 +4,6 @@ import (
 	"context"
 
 	"github.com/MaxFando/rate-limiter/internal/domain/network"
-	"github.com/MaxFando/rate-limiter/pkg/tracing"
 	"github.com/MaxFando/rate-limiter/pkg/utils"
 )
 
@@ -23,8 +22,6 @@ func NewService(store Store) *Service {
 }
 
 func (s *Service) AddIP(ctx context.Context, network network.IpNetwork) error {
-	span, ctx := tracing.CreateChildSpanWithFuncName(ctx)
-	defer span.Finish()
 
 	prefix, err := utils.GetPrefix(network.Ip.String(), network.Mask.String())
 	if err != nil {
@@ -39,8 +36,6 @@ func (s *Service) AddIP(ctx context.Context, network network.IpNetwork) error {
 }
 
 func (s *Service) RemoveIP(ctx context.Context, network network.IpNetwork) error {
-	span, ctx := tracing.CreateChildSpanWithFuncName(ctx)
-	defer span.Finish()
 
 	prefix, err := utils.GetPrefix(network.Ip.String(), network.Mask.String())
 	if err != nil {
@@ -54,8 +49,6 @@ func (s *Service) RemoveIP(ctx context.Context, network network.IpNetwork) error
 }
 
 func (s *Service) GetIPList(ctx context.Context) ([]network.IpNetwork, error) {
-	span, ctx := tracing.CreateChildSpanWithFuncName(ctx)
-	defer span.Finish()
 
 	ipList, err := s.store.Get(ctx)
 	if err != nil {

@@ -1,10 +1,14 @@
-package grpc
+package grpcapi
 
 import (
 	"context"
-	"github.com/MaxFando/rate-limiter/internal/delivery/grpc/blacklistpb"
+	"github.com/MaxFando/rate-limiter/internal/delivery/grpcapi/blacklistpb"
 	"github.com/MaxFando/rate-limiter/internal/domain/network"
 	"github.com/MaxFando/rate-limiter/internal/usecase/blacklist"
+	"github.com/MaxFando/rate-limiter/pkg/utils"
+	"go.uber.org/zap"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 )
 
 type BlacklistServer struct {
@@ -44,19 +48,30 @@ func (s *BlacklistServer) RemoveIp(ctx context.Context, req *blacklistpb.RemoveI
 	return &blacklistpb.RemoveIPResponse{Ok: true}, nil
 }
 
-func (s *BlacklistServer) GetIpList(ctx context.Context, req *blacklistpb.GetIpListRequest) (*blacklistpb.GetIpListResponse, error) {
-	list, err := s.uc.GetIPList(ctx)
+func (s *BlacklistServer) GetIpList(ctx *blacklistpb.GetIpListRequest, stream blacklistpb.BlackListService_GetIpListServer) error {
+	list, err := s.uc.GetIPList(context.Background())
 	if err != nil {
-		return nil, err
+		utils.Logger.Error("GetIpList error:", zap.Error(err))
+		return err
 	}
 
 	var ipList []*blacklistpb.IpNetwork
-	for _, network := range list {
+	for _, _network := range list {
 		ipList = append(ipList, &blacklistpb.IpNetwork{
-			Ip:   network.Ip.String(),
-			Mask: network.Mask.String(),
+			Ip:   _network.Ip.String(),
+			Mask: _network.Mask.String(),
 		})
 	}
 
-	return &blacklistpb.GetIpListResponse{IpNetwork: ipList}, nil
+	response := &blacklistpb.GetIpListResponse{
+		IpNetwork: ipList,
+	}
+
+	errStream := stream.Send(response)
+	if errStream != nil {
+		utils.Logger.Error("GetIpList error:", zap.Error(errStream))
+		return status.Errorf(codes.Internal, "unexpected error: %v", errStream)
+	}
+
+	return nil
 }

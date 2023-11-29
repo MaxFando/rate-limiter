@@ -2,9 +2,9 @@
 // versions:
 // 	protoc-gen-go v1.28.1
 // 	protoc        v3.21.5
-// source: blacklist_service.proto
+// source: whitelist_service.proto
 
-package blacklistpb
+package whitelistpb
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -31,7 +31,7 @@ type AddIpRequest struct {
 func (x *AddIpRequest) Reset() {
 	*x = AddIpRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_blacklist_service_proto_msgTypes[0]
+		mi := &file_whitelist_service_proto_msgTypes[0]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -44,7 +44,7 @@ func (x *AddIpRequest) String() string {
 func (*AddIpRequest) ProtoMessage() {}
 
 func (x *AddIpRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_blacklist_service_proto_msgTypes[0]
+	mi := &file_whitelist_service_proto_msgTypes[0]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -57,7 +57,7 @@ func (x *AddIpRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddIpRequest.ProtoReflect.Descriptor instead.
 func (*AddIpRequest) Descriptor() ([]byte, []int) {
-	return file_blacklist_service_proto_rawDescGZIP(), []int{0}
+	return file_whitelist_service_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *AddIpRequest) GetIpNetwork() *IpNetwork {
@@ -78,7 +78,7 @@ type AddIpResponse struct {
 func (x *AddIpResponse) Reset() {
 	*x = AddIpResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_blacklist_service_proto_msgTypes[1]
+		mi := &file_whitelist_service_proto_msgTypes[1]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -91,7 +91,7 @@ func (x *AddIpResponse) String() string {
 func (*AddIpResponse) ProtoMessage() {}
 
 func (x *AddIpResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_blacklist_service_proto_msgTypes[1]
+	mi := &file_whitelist_service_proto_msgTypes[1]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -104,7 +104,7 @@ func (x *AddIpResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddIpResponse.ProtoReflect.Descriptor instead.
 func (*AddIpResponse) Descriptor() ([]byte, []int) {
-	return file_blacklist_service_proto_rawDescGZIP(), []int{1}
+	return file_whitelist_service_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *AddIpResponse) GetOk() bool {
@@ -125,7 +125,7 @@ type RemoveIPRequest struct {
 func (x *RemoveIPRequest) Reset() {
 	*x = RemoveIPRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_blacklist_service_proto_msgTypes[2]
+		mi := &file_whitelist_service_proto_msgTypes[2]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -138,7 +138,7 @@ func (x *RemoveIPRequest) String() string {
 func (*RemoveIPRequest) ProtoMessage() {}
 
 func (x *RemoveIPRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_blacklist_service_proto_msgTypes[2]
+	mi := &file_whitelist_service_proto_msgTypes[2]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -151,7 +151,7 @@ func (x *RemoveIPRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RemoveIPRequest.ProtoReflect.Descriptor instead.
 func (*RemoveIPRequest) Descriptor() ([]byte, []int) {
-	return file_blacklist_service_proto_rawDescGZIP(), []int{2}
+	return file_whitelist_service_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *RemoveIPRequest) GetIpNetwork() *IpNetwork {
@@ -172,7 +172,7 @@ type RemoveIPResponse struct {
 func (x *RemoveIPResponse) Reset() {
 	*x = RemoveIPResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_blacklist_service_proto_msgTypes[3]
+		mi := &file_whitelist_service_proto_msgTypes[3]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -185,7 +185,7 @@ func (x *RemoveIPResponse) String() string {
 func (*RemoveIPResponse) ProtoMessage() {}
 
 func (x *RemoveIPResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_blacklist_service_proto_msgTypes[3]
+	mi := &file_whitelist_service_proto_msgTypes[3]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -198,7 +198,7 @@ func (x *RemoveIPResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RemoveIPResponse.ProtoReflect.Descriptor instead.
 func (*RemoveIPResponse) Descriptor() ([]byte, []int) {
-	return file_blacklist_service_proto_rawDescGZIP(), []int{3}
+	return file_whitelist_service_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *RemoveIPResponse) GetOk() bool {
@@ -217,7 +217,7 @@ type GetIpListRequest struct {
 func (x *GetIpListRequest) Reset() {
 	*x = GetIpListRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_blacklist_service_proto_msgTypes[4]
+		mi := &file_whitelist_service_proto_msgTypes[4]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -230,7 +230,7 @@ func (x *GetIpListRequest) String() string {
 func (*GetIpListRequest) ProtoMessage() {}
 
 func (x *GetIpListRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_blacklist_service_proto_msgTypes[4]
+	mi := &file_whitelist_service_proto_msgTypes[4]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -243,7 +243,7 @@ func (x *GetIpListRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetIpListRequest.ProtoReflect.Descriptor instead.
 func (*GetIpListRequest) Descriptor() ([]byte, []int) {
-	return file_blacklist_service_proto_rawDescGZIP(), []int{4}
+	return file_whitelist_service_proto_rawDescGZIP(), []int{4}
 }
 
 type GetIpListResponse struct {
@@ -257,7 +257,7 @@ type GetIpListResponse struct {
 func (x *GetIpListResponse) Reset() {
 	*x = GetIpListResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_blacklist_service_proto_msgTypes[5]
+		mi := &file_whitelist_service_proto_msgTypes[5]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -270,7 +270,7 @@ func (x *GetIpListResponse) String() string {
 func (*GetIpListResponse) ProtoMessage() {}
 
 func (x *GetIpListResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_blacklist_service_proto_msgTypes[5]
+	mi := &file_whitelist_service_proto_msgTypes[5]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -283,7 +283,7 @@ func (x *GetIpListResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetIpListResponse.ProtoReflect.Descriptor instead.
 func (*GetIpListResponse) Descriptor() ([]byte, []int) {
-	return file_blacklist_service_proto_rawDescGZIP(), []int{5}
+	return file_whitelist_service_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *GetIpListResponse) GetIpNetwork() []*IpNetwork {
@@ -293,83 +293,83 @@ func (x *GetIpListResponse) GetIpNetwork() []*IpNetwork {
 	return nil
 }
 
-var File_blacklist_service_proto protoreflect.FileDescriptor
+var File_whitelist_service_proto protoreflect.FileDescriptor
 
-var file_blacklist_service_proto_rawDesc = []byte{
-	0x0a, 0x17, 0x62, 0x6c, 0x61, 0x63, 0x6b, 0x6c, 0x69, 0x73, 0x74, 0x5f, 0x73, 0x65, 0x72, 0x76,
-	0x69, 0x63, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x09, 0x62, 0x6c, 0x61, 0x63, 0x6b,
-	0x6c, 0x69, 0x73, 0x74, 0x1a, 0x17, 0x62, 0x6c, 0x61, 0x63, 0x6b, 0x6c, 0x69, 0x73, 0x74, 0x5f,
+var file_whitelist_service_proto_rawDesc = []byte{
+	0x0a, 0x17, 0x77, 0x68, 0x69, 0x74, 0x65, 0x6c, 0x69, 0x73, 0x74, 0x5f, 0x73, 0x65, 0x72, 0x76,
+	0x69, 0x63, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x09, 0x77, 0x68, 0x69, 0x74, 0x65,
+	0x6c, 0x69, 0x73, 0x74, 0x1a, 0x17, 0x77, 0x68, 0x69, 0x74, 0x65, 0x6c, 0x69, 0x73, 0x74, 0x5f,
 	0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x43, 0x0a,
 	0x0c, 0x41, 0x64, 0x64, 0x49, 0x70, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x33, 0x0a,
 	0x0a, 0x69, 0x70, 0x5f, 0x6e, 0x65, 0x74, 0x77, 0x6f, 0x72, 0x6b, 0x18, 0x01, 0x20, 0x01, 0x28,
-	0x0b, 0x32, 0x14, 0x2e, 0x62, 0x6c, 0x61, 0x63, 0x6b, 0x6c, 0x69, 0x73, 0x74, 0x2e, 0x49, 0x70,
+	0x0b, 0x32, 0x14, 0x2e, 0x77, 0x68, 0x69, 0x74, 0x65, 0x6c, 0x69, 0x73, 0x74, 0x2e, 0x49, 0x70,
 	0x4e, 0x65, 0x74, 0x77, 0x6f, 0x72, 0x6b, 0x52, 0x09, 0x69, 0x70, 0x4e, 0x65, 0x74, 0x77, 0x6f,
 	0x72, 0x6b, 0x22, 0x1f, 0x0a, 0x0d, 0x41, 0x64, 0x64, 0x49, 0x70, 0x52, 0x65, 0x73, 0x70, 0x6f,
 	0x6e, 0x73, 0x65, 0x12, 0x0e, 0x0a, 0x02, 0x6f, 0x6b, 0x18, 0x01, 0x20, 0x01, 0x28, 0x08, 0x52,
 	0x02, 0x6f, 0x6b, 0x22, 0x46, 0x0a, 0x0f, 0x52, 0x65, 0x6d, 0x6f, 0x76, 0x65, 0x49, 0x50, 0x52,
 	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x33, 0x0a, 0x0a, 0x69, 0x70, 0x5f, 0x6e, 0x65, 0x74,
-	0x77, 0x6f, 0x72, 0x6b, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x14, 0x2e, 0x62, 0x6c, 0x61,
-	0x63, 0x6b, 0x6c, 0x69, 0x73, 0x74, 0x2e, 0x49, 0x70, 0x4e, 0x65, 0x74, 0x77, 0x6f, 0x72, 0x6b,
+	0x77, 0x6f, 0x72, 0x6b, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x14, 0x2e, 0x77, 0x68, 0x69,
+	0x74, 0x65, 0x6c, 0x69, 0x73, 0x74, 0x2e, 0x49, 0x70, 0x4e, 0x65, 0x74, 0x77, 0x6f, 0x72, 0x6b,
 	0x52, 0x09, 0x69, 0x70, 0x4e, 0x65, 0x74, 0x77, 0x6f, 0x72, 0x6b, 0x22, 0x22, 0x0a, 0x10, 0x52,
 	0x65, 0x6d, 0x6f, 0x76, 0x65, 0x49, 0x50, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12,
 	0x0e, 0x0a, 0x02, 0x6f, 0x6b, 0x18, 0x01, 0x20, 0x01, 0x28, 0x08, 0x52, 0x02, 0x6f, 0x6b, 0x22,
 	0x12, 0x0a, 0x10, 0x47, 0x65, 0x74, 0x49, 0x70, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x71, 0x75,
 	0x65, 0x73, 0x74, 0x22, 0x48, 0x0a, 0x11, 0x47, 0x65, 0x74, 0x49, 0x70, 0x4c, 0x69, 0x73, 0x74,
 	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x33, 0x0a, 0x0a, 0x69, 0x70, 0x5f, 0x6e,
-	0x65, 0x74, 0x77, 0x6f, 0x72, 0x6b, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x14, 0x2e, 0x62,
-	0x6c, 0x61, 0x63, 0x6b, 0x6c, 0x69, 0x73, 0x74, 0x2e, 0x49, 0x70, 0x4e, 0x65, 0x74, 0x77, 0x6f,
+	0x65, 0x74, 0x77, 0x6f, 0x72, 0x6b, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x14, 0x2e, 0x77,
+	0x68, 0x69, 0x74, 0x65, 0x6c, 0x69, 0x73, 0x74, 0x2e, 0x49, 0x70, 0x4e, 0x65, 0x74, 0x77, 0x6f,
 	0x72, 0x6b, 0x52, 0x09, 0x69, 0x70, 0x4e, 0x65, 0x74, 0x77, 0x6f, 0x72, 0x6b, 0x32, 0xdd, 0x01,
-	0x0a, 0x10, 0x42, 0x6c, 0x61, 0x63, 0x6b, 0x4c, 0x69, 0x73, 0x74, 0x53, 0x65, 0x72, 0x76, 0x69,
-	0x63, 0x65, 0x12, 0x3a, 0x0a, 0x05, 0x41, 0x64, 0x64, 0x49, 0x70, 0x12, 0x17, 0x2e, 0x62, 0x6c,
-	0x61, 0x63, 0x6b, 0x6c, 0x69, 0x73, 0x74, 0x2e, 0x41, 0x64, 0x64, 0x49, 0x70, 0x52, 0x65, 0x71,
-	0x75, 0x65, 0x73, 0x74, 0x1a, 0x18, 0x2e, 0x62, 0x6c, 0x61, 0x63, 0x6b, 0x6c, 0x69, 0x73, 0x74,
+	0x0a, 0x10, 0x57, 0x68, 0x69, 0x74, 0x65, 0x4c, 0x69, 0x73, 0x74, 0x53, 0x65, 0x72, 0x76, 0x69,
+	0x63, 0x65, 0x12, 0x3a, 0x0a, 0x05, 0x41, 0x64, 0x64, 0x49, 0x70, 0x12, 0x17, 0x2e, 0x77, 0x68,
+	0x69, 0x74, 0x65, 0x6c, 0x69, 0x73, 0x74, 0x2e, 0x41, 0x64, 0x64, 0x49, 0x70, 0x52, 0x65, 0x71,
+	0x75, 0x65, 0x73, 0x74, 0x1a, 0x18, 0x2e, 0x77, 0x68, 0x69, 0x74, 0x65, 0x6c, 0x69, 0x73, 0x74,
 	0x2e, 0x41, 0x64, 0x64, 0x49, 0x70, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x43,
-	0x0a, 0x08, 0x52, 0x65, 0x6d, 0x6f, 0x76, 0x65, 0x49, 0x70, 0x12, 0x1a, 0x2e, 0x62, 0x6c, 0x61,
-	0x63, 0x6b, 0x6c, 0x69, 0x73, 0x74, 0x2e, 0x52, 0x65, 0x6d, 0x6f, 0x76, 0x65, 0x49, 0x50, 0x52,
-	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1b, 0x2e, 0x62, 0x6c, 0x61, 0x63, 0x6b, 0x6c, 0x69,
+	0x0a, 0x08, 0x52, 0x65, 0x6d, 0x6f, 0x76, 0x65, 0x49, 0x70, 0x12, 0x1a, 0x2e, 0x77, 0x68, 0x69,
+	0x74, 0x65, 0x6c, 0x69, 0x73, 0x74, 0x2e, 0x52, 0x65, 0x6d, 0x6f, 0x76, 0x65, 0x49, 0x50, 0x52,
+	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1b, 0x2e, 0x77, 0x68, 0x69, 0x74, 0x65, 0x6c, 0x69,
 	0x73, 0x74, 0x2e, 0x52, 0x65, 0x6d, 0x6f, 0x76, 0x65, 0x49, 0x50, 0x52, 0x65, 0x73, 0x70, 0x6f,
 	0x6e, 0x73, 0x65, 0x12, 0x48, 0x0a, 0x09, 0x47, 0x65, 0x74, 0x49, 0x70, 0x4c, 0x69, 0x73, 0x74,
-	0x12, 0x1b, 0x2e, 0x62, 0x6c, 0x61, 0x63, 0x6b, 0x6c, 0x69, 0x73, 0x74, 0x2e, 0x47, 0x65, 0x74,
+	0x12, 0x1b, 0x2e, 0x77, 0x68, 0x69, 0x74, 0x65, 0x6c, 0x69, 0x73, 0x74, 0x2e, 0x47, 0x65, 0x74,
 	0x49, 0x70, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1c, 0x2e,
-	0x62, 0x6c, 0x61, 0x63, 0x6b, 0x6c, 0x69, 0x73, 0x74, 0x2e, 0x47, 0x65, 0x74, 0x49, 0x70, 0x4c,
-	0x69, 0x73, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x30, 0x01, 0x42, 0x24, 0x5a,
-	0x22, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x6e, 0x61, 0x6c, 0x2f, 0x64, 0x65, 0x6c, 0x69, 0x76, 0x65,
-	0x72, 0x79, 0x2f, 0x67, 0x72, 0x70, 0x63, 0x2f, 0x62, 0x6c, 0x61, 0x63, 0x6b, 0x6c, 0x69, 0x73,
-	0x74, 0x70, 0x62, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x77, 0x68, 0x69, 0x74, 0x65, 0x6c, 0x69, 0x73, 0x74, 0x2e, 0x47, 0x65, 0x74, 0x49, 0x70, 0x4c,
+	0x69, 0x73, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x30, 0x01, 0x42, 0x27, 0x5a,
+	0x25, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x6e, 0x61, 0x6c, 0x2f, 0x64, 0x65, 0x6c, 0x69, 0x76, 0x65,
+	0x72, 0x79, 0x2f, 0x67, 0x72, 0x70, 0x63, 0x61, 0x70, 0x69, 0x2f, 0x77, 0x68, 0x69, 0x74, 0x65,
+	0x6c, 0x69, 0x73, 0x74, 0x70, 0x62, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
-	file_blacklist_service_proto_rawDescOnce sync.Once
-	file_blacklist_service_proto_rawDescData = file_blacklist_service_proto_rawDesc
+	file_whitelist_service_proto_rawDescOnce sync.Once
+	file_whitelist_service_proto_rawDescData = file_whitelist_service_proto_rawDesc
 )
 
-func file_blacklist_service_proto_rawDescGZIP() []byte {
-	file_blacklist_service_proto_rawDescOnce.Do(func() {
-		file_blacklist_service_proto_rawDescData = protoimpl.X.CompressGZIP(file_blacklist_service_proto_rawDescData)
+func file_whitelist_service_proto_rawDescGZIP() []byte {
+	file_whitelist_service_proto_rawDescOnce.Do(func() {
+		file_whitelist_service_proto_rawDescData = protoimpl.X.CompressGZIP(file_whitelist_service_proto_rawDescData)
 	})
-	return file_blacklist_service_proto_rawDescData
+	return file_whitelist_service_proto_rawDescData
 }
 
-var file_blacklist_service_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
-var file_blacklist_service_proto_goTypes = []interface{}{
-	(*AddIpRequest)(nil),      // 0: blacklist.AddIpRequest
-	(*AddIpResponse)(nil),     // 1: blacklist.AddIpResponse
-	(*RemoveIPRequest)(nil),   // 2: blacklist.RemoveIPRequest
-	(*RemoveIPResponse)(nil),  // 3: blacklist.RemoveIPResponse
-	(*GetIpListRequest)(nil),  // 4: blacklist.GetIpListRequest
-	(*GetIpListResponse)(nil), // 5: blacklist.GetIpListResponse
-	(*IpNetwork)(nil),         // 6: blacklist.IpNetwork
+var file_whitelist_service_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
+var file_whitelist_service_proto_goTypes = []interface{}{
+	(*AddIpRequest)(nil),      // 0: whitelist.AddIpRequest
+	(*AddIpResponse)(nil),     // 1: whitelist.AddIpResponse
+	(*RemoveIPRequest)(nil),   // 2: whitelist.RemoveIPRequest
+	(*RemoveIPResponse)(nil),  // 3: whitelist.RemoveIPResponse
+	(*GetIpListRequest)(nil),  // 4: whitelist.GetIpListRequest
+	(*GetIpListResponse)(nil), // 5: whitelist.GetIpListResponse
+	(*IpNetwork)(nil),         // 6: whitelist.IpNetwork
 }
-var file_blacklist_service_proto_depIdxs = []int32{
-	6, // 0: blacklist.AddIpRequest.ip_network:type_name -> blacklist.IpNetwork
-	6, // 1: blacklist.RemoveIPRequest.ip_network:type_name -> blacklist.IpNetwork
-	6, // 2: blacklist.GetIpListResponse.ip_network:type_name -> blacklist.IpNetwork
-	0, // 3: blacklist.BlackListService.AddIp:input_type -> blacklist.AddIpRequest
-	2, // 4: blacklist.BlackListService.RemoveIp:input_type -> blacklist.RemoveIPRequest
-	4, // 5: blacklist.BlackListService.GetIpList:input_type -> blacklist.GetIpListRequest
-	1, // 6: blacklist.BlackListService.AddIp:output_type -> blacklist.AddIpResponse
-	3, // 7: blacklist.BlackListService.RemoveIp:output_type -> blacklist.RemoveIPResponse
-	5, // 8: blacklist.BlackListService.GetIpList:output_type -> blacklist.GetIpListResponse
+var file_whitelist_service_proto_depIdxs = []int32{
+	6, // 0: whitelist.AddIpRequest.ip_network:type_name -> whitelist.IpNetwork
+	6, // 1: whitelist.RemoveIPRequest.ip_network:type_name -> whitelist.IpNetwork
+	6, // 2: whitelist.GetIpListResponse.ip_network:type_name -> whitelist.IpNetwork
+	0, // 3: whitelist.WhiteListService.AddIp:input_type -> whitelist.AddIpRequest
+	2, // 4: whitelist.WhiteListService.RemoveIp:input_type -> whitelist.RemoveIPRequest
+	4, // 5: whitelist.WhiteListService.GetIpList:input_type -> whitelist.GetIpListRequest
+	1, // 6: whitelist.WhiteListService.AddIp:output_type -> whitelist.AddIpResponse
+	3, // 7: whitelist.WhiteListService.RemoveIp:output_type -> whitelist.RemoveIPResponse
+	5, // 8: whitelist.WhiteListService.GetIpList:output_type -> whitelist.GetIpListResponse
 	6, // [6:9] is the sub-list for method output_type
 	3, // [3:6] is the sub-list for method input_type
 	3, // [3:3] is the sub-list for extension type_name
@@ -377,14 +377,14 @@ var file_blacklist_service_proto_depIdxs = []int32{
 	0, // [0:3] is the sub-list for field type_name
 }
 
-func init() { file_blacklist_service_proto_init() }
-func file_blacklist_service_proto_init() {
-	if File_blacklist_service_proto != nil {
+func init() { file_whitelist_service_proto_init() }
+func file_whitelist_service_proto_init() {
+	if File_whitelist_service_proto != nil {
 		return
 	}
-	file_blacklist_message_proto_init()
+	file_whitelist_message_proto_init()
 	if !protoimpl.UnsafeEnabled {
-		file_blacklist_service_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
+		file_whitelist_service_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*AddIpRequest); i {
 			case 0:
 				return &v.state
@@ -396,7 +396,7 @@ func file_blacklist_service_proto_init() {
 				return nil
 			}
 		}
-		file_blacklist_service_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
+		file_whitelist_service_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*AddIpResponse); i {
 			case 0:
 				return &v.state
@@ -408,7 +408,7 @@ func file_blacklist_service_proto_init() {
 				return nil
 			}
 		}
-		file_blacklist_service_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
+		file_whitelist_service_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*RemoveIPRequest); i {
 			case 0:
 				return &v.state
@@ -420,7 +420,7 @@ func file_blacklist_service_proto_init() {
 				return nil
 			}
 		}
-		file_blacklist_service_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
+		file_whitelist_service_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*RemoveIPResponse); i {
 			case 0:
 				return &v.state
@@ -432,7 +432,7 @@ func file_blacklist_service_proto_init() {
 				return nil
 			}
 		}
-		file_blacklist_service_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
+		file_whitelist_service_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*GetIpListRequest); i {
 			case 0:
 				return &v.state
@@ -444,7 +444,7 @@ func file_blacklist_service_proto_init() {
 				return nil
 			}
 		}
-		file_blacklist_service_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
+		file_whitelist_service_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*GetIpListResponse); i {
 			case 0:
 				return &v.state
@@ -461,18 +461,18 @@ func file_blacklist_service_proto_init() {
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: file_blacklist_service_proto_rawDesc,
+			RawDescriptor: file_whitelist_service_proto_rawDesc,
 			NumEnums:      0,
 			NumMessages:   6,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_blacklist_service_proto_goTypes,
-		DependencyIndexes: file_blacklist_service_proto_depIdxs,
-		MessageInfos:      file_blacklist_service_proto_msgTypes,
+		GoTypes:           file_whitelist_service_proto_goTypes,
+		DependencyIndexes: file_whitelist_service_proto_depIdxs,
+		MessageInfos:      file_whitelist_service_proto_msgTypes,
 	}.Build()
-	File_blacklist_service_proto = out.File
-	file_blacklist_service_proto_rawDesc = nil
-	file_blacklist_service_proto_goTypes = nil
-	file_blacklist_service_proto_depIdxs = nil
+	File_whitelist_service_proto = out.File
+	file_whitelist_service_proto_rawDesc = nil
+	file_whitelist_service_proto_goTypes = nil
+	file_whitelist_service_proto_depIdxs = nil
 }

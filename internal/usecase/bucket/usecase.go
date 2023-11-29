@@ -2,7 +2,6 @@ package bucket
 
 import (
 	"context"
-	"github.com/MaxFando/rate-limiter/pkg/tracing"
 )
 
 type Service interface {
@@ -21,8 +20,6 @@ func NewUseCase(bucketService Service) *UseCase {
 }
 
 func (a *UseCase) Reset(ctx context.Context, login, ip string) (bool, bool, error) {
-	span, ctx := tracing.CreateChildSpanWithFuncName(ctx)
-	defer span.Finish()
 
 	isLoginReset := a.bucketService.ResetLoginBucket(ctx, login)
 	isIpReset := a.bucketService.ResetIpBucket(ctx, ip)

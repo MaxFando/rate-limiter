@@ -25,28 +25,5 @@ services:
     ports:
       - "5432:5432"
 
-  jaeger:
-    image: jaegertracing/all-in-one:latest
-    ports:
-      - "${JAEGER_AGENT_PORT:-16686}:16686"
-      - "${JAEGER_AGENT_PORT_UDP:-6831}:6831/udp"
-
-  structurizr:
-    image: structurizr/lite
-    container_name: structurizr
-    volumes:
-      - ./:/usr/local/structurizr
-    ports:
-      - "8080:8080"
-
-  puml:
-    image: plantuml/plantuml-server:jetty
-    container_name: puml
-    ports:
-      - "8081:8080"
-    environment:
-      - BASE_URL=plantuml
-      - PLANTUML_SECURITY_PROFILE=UNSECURE
-
 volumes:
   db-data:

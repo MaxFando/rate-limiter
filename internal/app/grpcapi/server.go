@@ -13,7 +13,6 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
 	"net"
-	"os"
 )
 
 type Server struct {
@@ -63,7 +62,7 @@ func (s *Server) Serve() {
 	}()
 }
 
-func (s *Server) Shutdown(c chan os.Signal) {
+func (s *Server) Shutdown() {
 	utils.Logger.Info("Service is stop")
 	s.grpcServer.GracefulStop()
 }

@@ -22,17 +22,16 @@ func NewUseCase(blackListService *blacklist.Service, whiteListService *whitelist
 }
 
 func (uc *UseCase) TryAuthorization(ctx context.Context, request network.Request) (bool, error) {
-
 	utils.Logger.Info("Check ip in blacklist")
 	ipNetworkList, err := uc.blackListService.GetIPList(ctx)
 	if err != nil {
 		return false, err
 	}
-	isIpInBlackList, err := uc.checkIpByNetworkList(ctx, request.Ip.String(), ipNetworkList)
+	isIPInBlackList, err := uc.checkIPByNetworkList(ctx, request.IP.String(), ipNetworkList)
 	if err != nil {
 		return false, err
 	}
-	if isIpInBlackList {
+	if isIPInBlackList {
 		return false, nil
 	}
 
@@ -41,17 +40,17 @@ func (uc *UseCase) TryAuthorization(ctx context.Context, request network.Request
 	if err != nil {
 		return false, err
 	}
-	isIpInWhiteList, err := uc.checkIpByNetworkList(ctx, request.Ip.String(), ipNetworkList)
+	isIPInWhiteList, err := uc.checkIPByNetworkList(ctx, request.IP.String(), ipNetworkList)
 	if err != nil {
 		return false, err
 	}
-	if isIpInWhiteList {
+	if isIPInWhiteList {
 		return true, nil
 	}
 
 	utils.Logger.Info("Check ip in bucketService")
 	isAllow := true
-	allow := uc.bucketService.TryGetPermissionInLoginBucket(ctx, request.Ip.String(), config.Config.Bucket.IpLimit)
+	allow := uc.bucketService.TryGetPermissionInLoginBucket(ctx, request.IP.String(), config.Config.Bucket.IPLimit)
 	if !allow {
 		isAllow = allow
 	}
@@ -71,15 +70,14 @@ func (uc *UseCase) TryAuthorization(ctx context.Context, request network.Request
 	return isAllow, nil
 }
 
-func (uc *UseCase) checkIpByNetworkList(ctx context.Context, ip string, ipNetworkList []network.IpNetwork) (bool, error) {
-
+func (uc *UseCase) checkIPByNetworkList(ctx context.Context, ip string, ipNetworkList []network.IPNetwork) (bool, error) {
 	for i := range ipNetworkList {
 		prefix, err := utils.GetPrefix(ip, ipNetworkList[i].Mask.String())
 		if err != nil {
 			return false, err
 		}
 
-		if prefix == ipNetworkList[i].Ip.String() {
+		if prefix == ipNetworkList[i].IP.String() {
 			return true, nil
 		}
 	}

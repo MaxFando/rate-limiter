@@ -1,54 +1,60 @@
-# настройки запуска
 run:
-  # значение конкурентности устанавливаем по количеству CPU
-  concurrency: 4
-
-  # анализ не должен превышать
-  timeout: 1m
-
-  # выводить "exit-code" при наличии хотя бы одного сообщения
-  issues-exit-code: 1
-
-  # не включать анализ тестов
   tests: true
 
-  # Пропускать папки вендора, сторонних зависимостей и т.д.
-  #   vendor$, third_party$, testdata$, examples$, Godeps$, builtin$
-  skip-dirs-use-default: true
+linters-settings:
+  funlen:
+    lines: 150
+    statements: 80
+  lll:
+    line-length: 150
 
-  # Пропускать файлы, заканчивающиеся на .bad.go
-  skip-files:
-    - ".*\\.bad\\.go$"
-
-  skip-dirs:
-    - mocks
-
-    # список линтеров
 linters:
   disable-all: true
   enable:
-    - gofmt # форматирование кода (пробелы, отступы, скобки)
-    - goimports # обновление списка imports
-    - govet # общий анализ возможных багов
-    - goconst # нахождение строк, которые следует вынести в константы
-    - funlen # поиск слишком крупных функций
-    - bodyclose # проверка на незакрытые body после чтения тела ответа
-    - errcheck # проверка на обработку всех ошибок
-    - exportloopref # детектирование экспорта указателя на переменную внутри цикла
-
-# настройки отдельных линтеров
-linters-settings:
-  goimports:
-    # указываем префикс локальных импортов, они будут группироваться
-    local-prefixes: github.com/MaxFando/rate-limiter
-  govet:
-    # проверка на использование переменных «в тени»
-    check-shadowing: true
-  goconst:
-    # goconst находит строки не меньше 2 символов, которые встречаются хотя бы 2 раза
-    min-len: 2
-    min-occurrences: 2
-  funlen:
-    # функция помечается длинной если она больше 120 строк кода либо больше 50 операций
-    lines: 120
-    statements: 50
+    - asciicheck
+    - bodyclose
+    - deadcode
+    - dogsled
+    - durationcheck
+    - errorlint
+    - exhaustive
+    - exportloopref
+    - funlen
+    - gocognit
+    - goconst
+    - gocritic
+    - gocyclo
+    - godot
+    - gofmt
+    - goheader
+    - gomoddirectives
+    - gomodguard
+    - goprintffuncname
+    - gosec
+    - govet
+    - ifshort
+    - importas
+    - ineffassign
+    - lll
+    - makezero
+    - misspell
+    - nestif
+    - nilerr
+    - noctx
+    - nolintlint
+    - prealloc
+    - predeclared
+    - rowserrcheck
+    - sqlclosecheck
+    - staticcheck
+    - structcheck
+    - stylecheck
+    - tagliatelle
+    - thelper
+    - tparallel
+    - typecheck
+    - unconvert
+    - unused
+    - varcheck
+    - wastedassign
+    - whitespace

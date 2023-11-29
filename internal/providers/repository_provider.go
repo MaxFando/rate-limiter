@@ -7,7 +7,6 @@ import (
 	"github.com/MaxFando/rate-limiter/internal/store/postgres"
 )
 
-// RepositoryProvider Аггрегирует в себе все виды баз данных проекта и передает их в контракты репозиториев
 type RepositoryProvider struct {
 	db *postgres.Client
 

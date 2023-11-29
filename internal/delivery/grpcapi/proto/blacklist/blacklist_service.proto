@@ -6,32 +6,32 @@ option go_package = "internal/delivery/grpcapi/blacklistpb";
 
 import "blacklist_message.proto";
 
-message AddIpRequest {
-  IpNetwork ip_network = 1;
+message AddIPRequest {
+  IPNetwork ip_network = 1;
 }
 
-message AddIpResponse {
+message AddIPResponse {
   bool ok = 1;
 }
 
 message RemoveIPRequest {
-  IpNetwork ip_network = 1;
+  IPNetwork ip_network = 1;
 }
 
 message RemoveIPResponse {
   bool ok = 1;
 }
 
-message GetIpListRequest {
+message GetIPListRequest {
 
 }
 
-message GetIpListResponse {
-  repeated IpNetwork ip_network = 1;
+message GetIPListResponse {
+  repeated IPNetwork ip_network = 1;
 }
 
 service BlackListService {
-  rpc AddIp (AddIpRequest) returns (AddIpResponse);
+  rpc AddIp (AddIPRequest) returns (AddIPResponse);
   rpc RemoveIp (RemoveIPRequest) returns (RemoveIPResponse);
-  rpc GetIpList (GetIpListRequest) returns (stream GetIpListResponse);
+  rpc GetIpList (GetIPListRequest) returns (stream GetIPListResponse);
 }

@@ -20,7 +20,6 @@ func (cv *customValidator) Validate(i interface{}) error {
 }
 
 type Handler struct {
-	echo *echo.Echo
 }
 
 func NewHandler(ctx context.Context) *echo.Echo {

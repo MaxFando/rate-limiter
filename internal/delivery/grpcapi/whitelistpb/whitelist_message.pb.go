@@ -20,7 +20,7 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-type IpNetwork struct {
+type IPNetwork struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
@@ -29,8 +29,8 @@ type IpNetwork struct {
 	Mask string `protobuf:"bytes,2,opt,name=mask,proto3" json:"mask,omitempty"`
 }
 
-func (x *IpNetwork) Reset() {
-	*x = IpNetwork{}
+func (x *IPNetwork) Reset() {
+	*x = IPNetwork{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_whitelist_message_proto_msgTypes[0]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -38,13 +38,13 @@ func (x *IpNetwork) Reset() {
 	}
 }
 
-func (x *IpNetwork) String() string {
+func (x *IPNetwork) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*IpNetwork) ProtoMessage() {}
+func (*IPNetwork) ProtoMessage() {}
 
-func (x *IpNetwork) ProtoReflect() protoreflect.Message {
+func (x *IPNetwork) ProtoReflect() protoreflect.Message {
 	mi := &file_whitelist_message_proto_msgTypes[0]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -56,19 +56,19 @@ func (x *IpNetwork) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use IpNetwork.ProtoReflect.Descriptor instead.
-func (*IpNetwork) Descriptor() ([]byte, []int) {
+// Deprecated: Use IPNetwork.ProtoReflect.Descriptor instead.
+func (*IPNetwork) Descriptor() ([]byte, []int) {
 	return file_whitelist_message_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *IpNetwork) GetIp() string {
+func (x *IPNetwork) GetIp() string {
 	if x != nil {
 		return x.Ip
 	}
 	return ""
 }
 
-func (x *IpNetwork) GetMask() string {
+func (x *IPNetwork) GetMask() string {
 	if x != nil {
 		return x.Mask
 	}
@@ -80,7 +80,7 @@ var File_whitelist_message_proto protoreflect.FileDescriptor
 var file_whitelist_message_proto_rawDesc = []byte{
 	0x0a, 0x17, 0x77, 0x68, 0x69, 0x74, 0x65, 0x6c, 0x69, 0x73, 0x74, 0x5f, 0x6d, 0x65, 0x73, 0x73,
 	0x61, 0x67, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x09, 0x77, 0x68, 0x69, 0x74, 0x65,
-	0x6c, 0x69, 0x73, 0x74, 0x22, 0x2f, 0x0a, 0x09, 0x49, 0x70, 0x4e, 0x65, 0x74, 0x77, 0x6f, 0x72,
+	0x6c, 0x69, 0x73, 0x74, 0x22, 0x2f, 0x0a, 0x09, 0x49, 0x50, 0x4e, 0x65, 0x74, 0x77, 0x6f, 0x72,
 	0x6b, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x70, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02, 0x69,
 	0x70, 0x12, 0x12, 0x0a, 0x04, 0x6d, 0x61, 0x73, 0x6b, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52,
 	0x04, 0x6d, 0x61, 0x73, 0x6b, 0x42, 0x27, 0x5a, 0x25, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x6e, 0x61,
@@ -103,7 +103,7 @@ func file_whitelist_message_proto_rawDescGZIP() []byte {
 
 var file_whitelist_message_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_whitelist_message_proto_goTypes = []interface{}{
-	(*IpNetwork)(nil), // 0: whitelist.IpNetwork
+	(*IPNetwork)(nil), // 0: whitelist.IPNetwork
 }
 var file_whitelist_message_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for method output_type
@@ -120,7 +120,7 @@ func file_whitelist_message_proto_init() {
 	}
 	if !protoimpl.UnsafeEnabled {
 		file_whitelist_message_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*IpNetwork); i {
+			switch v := v.(*IPNetwork); i {
 			case 0:
 				return &v.state
 			case 1:

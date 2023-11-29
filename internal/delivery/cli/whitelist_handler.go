@@ -13,32 +13,32 @@ func (c *CommandLineInterface) whiteListHandler(ctx context.Context, setCommand 
 			break
 		}
 
-		ipNetwork, err := network.NewIpNetwork(setCommand[2], setCommand[3])
+		ipNetwork, err := network.NewIPNetwork(setCommand[2], setCommand[3])
 		if err != nil {
-			fmt.Printf("bootExecutor - whitelist add: %w", err)
+			fmt.Printf("bootExecutor - whitelist add: %s", err.Error())
 			return
 		}
 
-		c.addIpToWl(ctx, ipNetwork)
+		c.addIPToWl(ctx, ipNetwork)
 	case "remove":
 		if len(setCommand) != 4 {
 			break
 		}
 
-		ipNetwork, err := network.NewIpNetwork(setCommand[2], setCommand[3])
+		ipNetwork, err := network.NewIPNetwork(setCommand[2], setCommand[3])
 		if err != nil {
-			fmt.Printf("bootExecutor - whitelist remove: %w", err)
+			fmt.Printf("bootExecutor - whitelist remove: %s", err.Error())
 			return
 		}
-		c.removeIpToWl(ctx, ipNetwork)
+		c.removeIPToWl(ctx, ipNetwork)
 	case "get":
-		c.getIpListFromWl(ctx)
+		c.getIPListFromWl(ctx)
 	default:
 		fmt.Println("unknown command")
 	}
 }
 
-func (c *CommandLineInterface) addIpToWl(ctx context.Context, ipNet network.IpNetwork) {
+func (c *CommandLineInterface) addIPToWl(ctx context.Context, ipNet network.IPNetwork) {
 	err := c.whiteListUseCase.AddIP(ctx, ipNet)
 	if err != nil {
 		fmt.Printf("service error: %v \n", err)
@@ -47,7 +47,7 @@ func (c *CommandLineInterface) addIpToWl(ctx context.Context, ipNet network.IpNe
 	fmt.Printf("add address: %v to whitelist \n", ipNet)
 }
 
-func (c *CommandLineInterface) removeIpToWl(ctx context.Context, ipNet network.IpNetwork) {
+func (c *CommandLineInterface) removeIPToWl(ctx context.Context, ipNet network.IPNetwork) {
 	err := c.whiteListUseCase.RemoveIP(ctx, ipNet)
 	if err != nil {
 		fmt.Printf("service error: %v \n", err)
@@ -56,7 +56,7 @@ func (c *CommandLineInterface) removeIpToWl(ctx context.Context, ipNet network.I
 	fmt.Printf("remove address: %v from whitelist \n", ipNet)
 }
 
-func (c *CommandLineInterface) getIpListFromWl(ctx context.Context) {
+func (c *CommandLineInterface) getIPListFromWl(ctx context.Context) {
 	list, err := c.whiteListUseCase.GetIPList(ctx)
 	if err != nil {
 		return

@@ -3,7 +3,7 @@ package config
 import "github.com/spf13/viper"
 
 type bucket struct {
-	IpLimit             int
+	IPLimit             int
 	LoginLimit          int
 	PasswordLimit       int
 	ResetBucketInterval int
@@ -16,7 +16,7 @@ func newBucket() bucket {
 	viper.SetDefault("RESET_BUCKET_INTERVAL", 60)
 
 	return bucket{
-		IpLimit:             viper.GetInt("IP_LIMIT"),
+		IPLimit:             viper.GetInt("IP_LIMIT"),
 		LoginLimit:          viper.GetInt("LOGIN_LIMIT"),
 		PasswordLimit:       viper.GetInt("PASSWORD_LIMIT"),
 		ResetBucketInterval: viper.GetInt("RESET_BUCKET_INTERVAL"),

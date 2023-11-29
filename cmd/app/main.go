@@ -45,7 +45,7 @@ func main() {
 	ctx = context.WithValue(ctx, providers.ServiceProviderKey, serviceProvider)
 	ctx = context.WithValue(ctx, providers.UseCaseProviderKey, useCaseProvider)
 
-	httpServer := http.NewHttpServer(http.NewHandler(ctx), ":"+config.Config.Listen.Port)
+	httpServer := http.NewHTTPServer(http.NewHandler(ctx), ":"+config.Config.Listen.Port)
 	httpServer.Serve()
 	utils.Logger.Info("Приложение стартовало в режиме", zap.String("log_level", config.Config.AppConfig.LogLevel))
 	utils.Logger.Info("На порту " + config.Config.Listen.Port)
@@ -62,8 +62,8 @@ func main() {
 	select {
 	case s := <-interrupt:
 		utils.Logger.Info("app - Run - signal: " + s.String())
-	case errHttp := <-httpServer.Notify():
-		utils.Logger.Error(fmt.Errorf("app - Run - httpServer.Notify: %w", errHttp))
+	case errHTTP := <-httpServer.Notify():
+		utils.Logger.Error(fmt.Errorf("app - Run - httpServer.Notify: %w", errHTTP))
 	case errCmd := <-cmd.Notify():
 		utils.Logger.Error(fmt.Errorf("app - Run - cmd.Notify: %w", errCmd))
 	case errGrpc := <-grpcServer.Notify():
@@ -71,5 +71,8 @@ func main() {
 	}
 
 	cancel()
+	_ = httpServer.Shutdown()
+	grpcServer.Shutdown()
+
 	utils.Logger.Info("Приложение завершило работу")
 }

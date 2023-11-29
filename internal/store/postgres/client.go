@@ -25,7 +25,7 @@ func New() *Client {
 }
 
 func (c *Client) Connect(ctx context.Context, name string, cfg config.Database) error {
-	connectionString := fmt.Sprintf("postgres://%s:%s@%s:%s/%s?sslmode=%s", cfg.User, cfg.Password, cfg.Host, cfg.Port, cfg.DbName, cfg.SslMode)
+	connectionString := fmt.Sprintf("postgres://%s:%s@%s:%s/%s?sslmode=%s", cfg.User, cfg.Password, cfg.Host, cfg.Port, cfg.DBName, cfg.SslMode)
 
 	connection, err := gorm.Open(postgres.Open(connectionString), &gorm.Config{
 		Logger: logger.NewGormZapLoggerWrapper(utils.Logger.GetLogger().Sugar()).LogMode(gormLogger.Info),

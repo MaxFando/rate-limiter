@@ -4,7 +4,7 @@ import "github.com/spf13/viper"
 
 type Database struct {
 	Host     string
-	DbName   string
+	DBName   string
 	Port     string
 	User     string
 	Password string
@@ -21,7 +21,7 @@ func newDatabase() Database {
 
 	return Database{
 		Host:     viper.GetString("DB_HOST"),
-		DbName:   viper.GetString("DB_NAME"),
+		DBName:   viper.GetString("DB_NAME"),
 		Port:     viper.GetString("DB_PORT"),
 		User:     viper.GetString("DB_USER"),
 		Password: viper.GetString("DB_PASSWORD"),

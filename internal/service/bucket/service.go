@@ -25,22 +25,18 @@ func NewService(
 }
 
 func (s *Service) TryGetPermissionInLoginBucket(ctx context.Context, key string, limit int) bool {
-
 	return s.loginBucketRepo.TryGetPermissionInBucket(ctx, key, limit)
 }
 
 func (s *Service) TryGetPermissionInPasswordBucket(ctx context.Context, key string, limit int) bool {
-
 	return s.passwordBucketRepo.TryGetPermissionInBucket(ctx, key, limit)
 }
 
 func (s *Service) ResetLoginBucket(ctx context.Context, login string) bool {
-
 	return s.loginBucketRepo.ResetBucket(ctx, login)
 }
 
-func (s *Service) ResetIpBucket(ctx context.Context, ip string) bool {
-
+func (s *Service) ResetIPBucket(ctx context.Context, ip string) bool {
 	return s.ipBucketRepo.ResetBucket(ctx, ip)
 }
 

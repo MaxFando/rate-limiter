@@ -20,22 +20,25 @@ func NewBlacklistServer(uc *blacklist.UseCase) *BlacklistServer {
 	return &BlacklistServer{uc: uc}
 }
 
-func (s *BlacklistServer) AddIp(ctx context.Context, req *blacklistpb.AddIpRequest) (*blacklistpb.AddIpResponse, error) {
-	request, err := network.NewIpNetwork(
+func (s *BlacklistServer) AddIP(ctx context.Context, req *blacklistpb.AddIPRequest) (*blacklistpb.AddIPResponse, error) {
+	request, err := network.NewIPNetwork(
 		req.IpNetwork.Ip,
 		req.IpNetwork.Mask,
 	)
+	if err != nil {
+		return nil, err
+	}
 
 	err = s.uc.AddIP(ctx, request)
 	if err != nil {
 		return nil, err
 	}
 
-	return &blacklistpb.AddIpResponse{Ok: true}, nil
+	return &blacklistpb.AddIPResponse{Ok: true}, nil
 }
 
-func (s *BlacklistServer) RemoveIp(ctx context.Context, req *blacklistpb.RemoveIPRequest) (*blacklistpb.RemoveIPResponse, error) {
-	request, err := network.NewIpNetwork(req.IpNetwork.Ip, req.IpNetwork.Mask)
+func (s *BlacklistServer) RemoveIP(ctx context.Context, req *blacklistpb.RemoveIPRequest) (*blacklistpb.RemoveIPResponse, error) {
+	request, err := network.NewIPNetwork(req.IpNetwork.Ip, req.IpNetwork.Mask)
 	if err != nil {
 		return nil, err
 	}
@@ -48,28 +51,28 @@ func (s *BlacklistServer) RemoveIp(ctx context.Context, req *blacklistpb.RemoveI
 	return &blacklistpb.RemoveIPResponse{Ok: true}, nil
 }
 
-func (s *BlacklistServer) GetIpList(ctx *blacklistpb.GetIpListRequest, stream blacklistpb.BlackListService_GetIpListServer) error {
+func (s *BlacklistServer) GetIPList(ctx *blacklistpb.GetIPListRequest, stream blacklistpb.BlackListService_GetIpListServer) error {
 	list, err := s.uc.GetIPList(context.Background())
 	if err != nil {
-		utils.Logger.Error("GetIpList error:", zap.Error(err))
+		utils.Logger.Error("GetIPList error:", zap.Error(err))
 		return err
 	}
 
-	var ipList []*blacklistpb.IpNetwork
+	ipList := make([]*blacklistpb.IPNetwork, 0, len(list))
 	for _, _network := range list {
-		ipList = append(ipList, &blacklistpb.IpNetwork{
-			Ip:   _network.Ip.String(),
+		ipList = append(ipList, &blacklistpb.IPNetwork{
+			Ip:   _network.IP.String(),
 			Mask: _network.Mask.String(),
 		})
 	}
 
-	response := &blacklistpb.GetIpListResponse{
+	response := &blacklistpb.GetIPListResponse{
 		IpNetwork: ipList,
 	}
 
 	errStream := stream.Send(response)
 	if errStream != nil {
-		utils.Logger.Error("GetIpList error:", zap.Error(errStream))
+		utils.Logger.Error("GetIPList error:", zap.Error(errStream))
 		return status.Errorf(codes.Internal, "unexpected error: %v", errStream)
 	}
 

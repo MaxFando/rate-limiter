@@ -8,7 +8,7 @@ type Service interface {
 	TryGetPermissionInLoginBucket(ctx context.Context, key string, limit int) bool
 	TryGetPermissionInPasswordBucket(ctx context.Context, key string, limit int) bool
 	ResetLoginBucket(ctx context.Context, login string) bool
-	ResetIpBucket(ctx context.Context, ip string) bool
+	ResetIPBucket(ctx context.Context, ip string) bool
 }
 
 type UseCase struct {
@@ -20,9 +20,8 @@ func NewUseCase(bucketService Service) *UseCase {
 }
 
 func (a *UseCase) Reset(ctx context.Context, login, ip string) (bool, bool, error) {
-
 	isLoginReset := a.bucketService.ResetLoginBucket(ctx, login)
-	isIpReset := a.bucketService.ResetIpBucket(ctx, ip)
+	isIPReset := a.bucketService.ResetIPBucket(ctx, ip)
 
-	return isLoginReset, isIpReset, nil
+	return isLoginReset, isIPReset, nil
 }

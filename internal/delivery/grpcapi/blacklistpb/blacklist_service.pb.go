@@ -20,16 +20,16 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-type AddIpRequest struct {
+type AddIPRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	IpNetwork *IpNetwork `protobuf:"bytes,1,opt,name=ip_network,json=ipNetwork,proto3" json:"ip_network,omitempty"`
+	IpNetwork *IPNetwork `protobuf:"bytes,1,opt,name=ip_network,json=ipNetwork,proto3" json:"ip_network,omitempty"`
 }
 
-func (x *AddIpRequest) Reset() {
-	*x = AddIpRequest{}
+func (x *AddIPRequest) Reset() {
+	*x = AddIPRequest{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_blacklist_service_proto_msgTypes[0]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -37,13 +37,13 @@ func (x *AddIpRequest) Reset() {
 	}
 }
 
-func (x *AddIpRequest) String() string {
+func (x *AddIPRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*AddIpRequest) ProtoMessage() {}
+func (*AddIPRequest) ProtoMessage() {}
 
-func (x *AddIpRequest) ProtoReflect() protoreflect.Message {
+func (x *AddIPRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_blacklist_service_proto_msgTypes[0]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -55,19 +55,19 @@ func (x *AddIpRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use AddIpRequest.ProtoReflect.Descriptor instead.
-func (*AddIpRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use AddIPRequest.ProtoReflect.Descriptor instead.
+func (*AddIPRequest) Descriptor() ([]byte, []int) {
 	return file_blacklist_service_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *AddIpRequest) GetIpNetwork() *IpNetwork {
+func (x *AddIPRequest) GetIpNetwork() *IPNetwork {
 	if x != nil {
 		return x.IpNetwork
 	}
 	return nil
 }
 
-type AddIpResponse struct {
+type AddIPResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
@@ -75,8 +75,8 @@ type AddIpResponse struct {
 	Ok bool `protobuf:"varint,1,opt,name=ok,proto3" json:"ok,omitempty"`
 }
 
-func (x *AddIpResponse) Reset() {
-	*x = AddIpResponse{}
+func (x *AddIPResponse) Reset() {
+	*x = AddIPResponse{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_blacklist_service_proto_msgTypes[1]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -84,13 +84,13 @@ func (x *AddIpResponse) Reset() {
 	}
 }
 
-func (x *AddIpResponse) String() string {
+func (x *AddIPResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*AddIpResponse) ProtoMessage() {}
+func (*AddIPResponse) ProtoMessage() {}
 
-func (x *AddIpResponse) ProtoReflect() protoreflect.Message {
+func (x *AddIPResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_blacklist_service_proto_msgTypes[1]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -102,12 +102,12 @@ func (x *AddIpResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use AddIpResponse.ProtoReflect.Descriptor instead.
-func (*AddIpResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use AddIPResponse.ProtoReflect.Descriptor instead.
+func (*AddIPResponse) Descriptor() ([]byte, []int) {
 	return file_blacklist_service_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *AddIpResponse) GetOk() bool {
+func (x *AddIPResponse) GetOk() bool {
 	if x != nil {
 		return x.Ok
 	}
@@ -119,7 +119,7 @@ type RemoveIPRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	IpNetwork *IpNetwork `protobuf:"bytes,1,opt,name=ip_network,json=ipNetwork,proto3" json:"ip_network,omitempty"`
+	IpNetwork *IPNetwork `protobuf:"bytes,1,opt,name=ip_network,json=ipNetwork,proto3" json:"ip_network,omitempty"`
 }
 
 func (x *RemoveIPRequest) Reset() {
@@ -154,7 +154,7 @@ func (*RemoveIPRequest) Descriptor() ([]byte, []int) {
 	return file_blacklist_service_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *RemoveIPRequest) GetIpNetwork() *IpNetwork {
+func (x *RemoveIPRequest) GetIpNetwork() *IPNetwork {
 	if x != nil {
 		return x.IpNetwork
 	}
@@ -208,14 +208,14 @@ func (x *RemoveIPResponse) GetOk() bool {
 	return false
 }
 
-type GetIpListRequest struct {
+type GetIPListRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 }
 
-func (x *GetIpListRequest) Reset() {
-	*x = GetIpListRequest{}
+func (x *GetIPListRequest) Reset() {
+	*x = GetIPListRequest{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_blacklist_service_proto_msgTypes[4]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -223,13 +223,13 @@ func (x *GetIpListRequest) Reset() {
 	}
 }
 
-func (x *GetIpListRequest) String() string {
+func (x *GetIPListRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetIpListRequest) ProtoMessage() {}
+func (*GetIPListRequest) ProtoMessage() {}
 
-func (x *GetIpListRequest) ProtoReflect() protoreflect.Message {
+func (x *GetIPListRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_blacklist_service_proto_msgTypes[4]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -241,21 +241,21 @@ func (x *GetIpListRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetIpListRequest.ProtoReflect.Descriptor instead.
-func (*GetIpListRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use GetIPListRequest.ProtoReflect.Descriptor instead.
+func (*GetIPListRequest) Descriptor() ([]byte, []int) {
 	return file_blacklist_service_proto_rawDescGZIP(), []int{4}
 }
 
-type GetIpListResponse struct {
+type GetIPListResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	IpNetwork []*IpNetwork `protobuf:"bytes,1,rep,name=ip_network,json=ipNetwork,proto3" json:"ip_network,omitempty"`
+	IpNetwork []*IPNetwork `protobuf:"bytes,1,rep,name=ip_network,json=ipNetwork,proto3" json:"ip_network,omitempty"`
 }
 
-func (x *GetIpListResponse) Reset() {
-	*x = GetIpListResponse{}
+func (x *GetIPListResponse) Reset() {
+	*x = GetIPListResponse{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_blacklist_service_proto_msgTypes[5]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -263,13 +263,13 @@ func (x *GetIpListResponse) Reset() {
 	}
 }
 
-func (x *GetIpListResponse) String() string {
+func (x *GetIPListResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetIpListResponse) ProtoMessage() {}
+func (*GetIPListResponse) ProtoMessage() {}
 
-func (x *GetIpListResponse) ProtoReflect() protoreflect.Message {
+func (x *GetIPListResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_blacklist_service_proto_msgTypes[5]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -281,12 +281,12 @@ func (x *GetIpListResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetIpListResponse.ProtoReflect.Descriptor instead.
-func (*GetIpListResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use GetIPListResponse.ProtoReflect.Descriptor instead.
+func (*GetIPListResponse) Descriptor() ([]byte, []int) {
 	return file_blacklist_service_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *GetIpListResponse) GetIpNetwork() []*IpNetwork {
+func (x *GetIPListResponse) GetIpNetwork() []*IPNetwork {
 	if x != nil {
 		return x.IpNetwork
 	}
@@ -300,38 +300,38 @@ var file_blacklist_service_proto_rawDesc = []byte{
 	0x69, 0x63, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x09, 0x62, 0x6c, 0x61, 0x63, 0x6b,
 	0x6c, 0x69, 0x73, 0x74, 0x1a, 0x17, 0x62, 0x6c, 0x61, 0x63, 0x6b, 0x6c, 0x69, 0x73, 0x74, 0x5f,
 	0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x43, 0x0a,
-	0x0c, 0x41, 0x64, 0x64, 0x49, 0x70, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x33, 0x0a,
+	0x0c, 0x41, 0x64, 0x64, 0x49, 0x50, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x33, 0x0a,
 	0x0a, 0x69, 0x70, 0x5f, 0x6e, 0x65, 0x74, 0x77, 0x6f, 0x72, 0x6b, 0x18, 0x01, 0x20, 0x01, 0x28,
-	0x0b, 0x32, 0x14, 0x2e, 0x62, 0x6c, 0x61, 0x63, 0x6b, 0x6c, 0x69, 0x73, 0x74, 0x2e, 0x49, 0x70,
+	0x0b, 0x32, 0x14, 0x2e, 0x62, 0x6c, 0x61, 0x63, 0x6b, 0x6c, 0x69, 0x73, 0x74, 0x2e, 0x49, 0x50,
 	0x4e, 0x65, 0x74, 0x77, 0x6f, 0x72, 0x6b, 0x52, 0x09, 0x69, 0x70, 0x4e, 0x65, 0x74, 0x77, 0x6f,
-	0x72, 0x6b, 0x22, 0x1f, 0x0a, 0x0d, 0x41, 0x64, 0x64, 0x49, 0x70, 0x52, 0x65, 0x73, 0x70, 0x6f,
+	0x72, 0x6b, 0x22, 0x1f, 0x0a, 0x0d, 0x41, 0x64, 0x64, 0x49, 0x50, 0x52, 0x65, 0x73, 0x70, 0x6f,
 	0x6e, 0x73, 0x65, 0x12, 0x0e, 0x0a, 0x02, 0x6f, 0x6b, 0x18, 0x01, 0x20, 0x01, 0x28, 0x08, 0x52,
 	0x02, 0x6f, 0x6b, 0x22, 0x46, 0x0a, 0x0f, 0x52, 0x65, 0x6d, 0x6f, 0x76, 0x65, 0x49, 0x50, 0x52,
 	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x33, 0x0a, 0x0a, 0x69, 0x70, 0x5f, 0x6e, 0x65, 0x74,
 	0x77, 0x6f, 0x72, 0x6b, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x14, 0x2e, 0x62, 0x6c, 0x61,
-	0x63, 0x6b, 0x6c, 0x69, 0x73, 0x74, 0x2e, 0x49, 0x70, 0x4e, 0x65, 0x74, 0x77, 0x6f, 0x72, 0x6b,
+	0x63, 0x6b, 0x6c, 0x69, 0x73, 0x74, 0x2e, 0x49, 0x50, 0x4e, 0x65, 0x74, 0x77, 0x6f, 0x72, 0x6b,
 	0x52, 0x09, 0x69, 0x70, 0x4e, 0x65, 0x74, 0x77, 0x6f, 0x72, 0x6b, 0x22, 0x22, 0x0a, 0x10, 0x52,
 	0x65, 0x6d, 0x6f, 0x76, 0x65, 0x49, 0x50, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12,
 	0x0e, 0x0a, 0x02, 0x6f, 0x6b, 0x18, 0x01, 0x20, 0x01, 0x28, 0x08, 0x52, 0x02, 0x6f, 0x6b, 0x22,
-	0x12, 0x0a, 0x10, 0x47, 0x65, 0x74, 0x49, 0x70, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x71, 0x75,
-	0x65, 0x73, 0x74, 0x22, 0x48, 0x0a, 0x11, 0x47, 0x65, 0x74, 0x49, 0x70, 0x4c, 0x69, 0x73, 0x74,
+	0x12, 0x0a, 0x10, 0x47, 0x65, 0x74, 0x49, 0x50, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x71, 0x75,
+	0x65, 0x73, 0x74, 0x22, 0x48, 0x0a, 0x11, 0x47, 0x65, 0x74, 0x49, 0x50, 0x4c, 0x69, 0x73, 0x74,
 	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x33, 0x0a, 0x0a, 0x69, 0x70, 0x5f, 0x6e,
 	0x65, 0x74, 0x77, 0x6f, 0x72, 0x6b, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x14, 0x2e, 0x62,
-	0x6c, 0x61, 0x63, 0x6b, 0x6c, 0x69, 0x73, 0x74, 0x2e, 0x49, 0x70, 0x4e, 0x65, 0x74, 0x77, 0x6f,
+	0x6c, 0x61, 0x63, 0x6b, 0x6c, 0x69, 0x73, 0x74, 0x2e, 0x49, 0x50, 0x4e, 0x65, 0x74, 0x77, 0x6f,
 	0x72, 0x6b, 0x52, 0x09, 0x69, 0x70, 0x4e, 0x65, 0x74, 0x77, 0x6f, 0x72, 0x6b, 0x32, 0xdd, 0x01,
 	0x0a, 0x10, 0x42, 0x6c, 0x61, 0x63, 0x6b, 0x4c, 0x69, 0x73, 0x74, 0x53, 0x65, 0x72, 0x76, 0x69,
 	0x63, 0x65, 0x12, 0x3a, 0x0a, 0x05, 0x41, 0x64, 0x64, 0x49, 0x70, 0x12, 0x17, 0x2e, 0x62, 0x6c,
-	0x61, 0x63, 0x6b, 0x6c, 0x69, 0x73, 0x74, 0x2e, 0x41, 0x64, 0x64, 0x49, 0x70, 0x52, 0x65, 0x71,
+	0x61, 0x63, 0x6b, 0x6c, 0x69, 0x73, 0x74, 0x2e, 0x41, 0x64, 0x64, 0x49, 0x50, 0x52, 0x65, 0x71,
 	0x75, 0x65, 0x73, 0x74, 0x1a, 0x18, 0x2e, 0x62, 0x6c, 0x61, 0x63, 0x6b, 0x6c, 0x69, 0x73, 0x74,
-	0x2e, 0x41, 0x64, 0x64, 0x49, 0x70, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x43,
+	0x2e, 0x41, 0x64, 0x64, 0x49, 0x50, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x43,
 	0x0a, 0x08, 0x52, 0x65, 0x6d, 0x6f, 0x76, 0x65, 0x49, 0x70, 0x12, 0x1a, 0x2e, 0x62, 0x6c, 0x61,
 	0x63, 0x6b, 0x6c, 0x69, 0x73, 0x74, 0x2e, 0x52, 0x65, 0x6d, 0x6f, 0x76, 0x65, 0x49, 0x50, 0x52,
 	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1b, 0x2e, 0x62, 0x6c, 0x61, 0x63, 0x6b, 0x6c, 0x69,
 	0x73, 0x74, 0x2e, 0x52, 0x65, 0x6d, 0x6f, 0x76, 0x65, 0x49, 0x50, 0x52, 0x65, 0x73, 0x70, 0x6f,
 	0x6e, 0x73, 0x65, 0x12, 0x48, 0x0a, 0x09, 0x47, 0x65, 0x74, 0x49, 0x70, 0x4c, 0x69, 0x73, 0x74,
 	0x12, 0x1b, 0x2e, 0x62, 0x6c, 0x61, 0x63, 0x6b, 0x6c, 0x69, 0x73, 0x74, 0x2e, 0x47, 0x65, 0x74,
-	0x49, 0x70, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1c, 0x2e,
-	0x62, 0x6c, 0x61, 0x63, 0x6b, 0x6c, 0x69, 0x73, 0x74, 0x2e, 0x47, 0x65, 0x74, 0x49, 0x70, 0x4c,
+	0x49, 0x50, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1c, 0x2e,
+	0x62, 0x6c, 0x61, 0x63, 0x6b, 0x6c, 0x69, 0x73, 0x74, 0x2e, 0x47, 0x65, 0x74, 0x49, 0x50, 0x4c,
 	0x69, 0x73, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x30, 0x01, 0x42, 0x27, 0x5a,
 	0x25, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x6e, 0x61, 0x6c, 0x2f, 0x64, 0x65, 0x6c, 0x69, 0x76, 0x65,
 	0x72, 0x79, 0x2f, 0x67, 0x72, 0x70, 0x63, 0x61, 0x70, 0x69, 0x2f, 0x62, 0x6c, 0x61, 0x63, 0x6b,
@@ -352,24 +352,24 @@ func file_blacklist_service_proto_rawDescGZIP() []byte {
 
 var file_blacklist_service_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_blacklist_service_proto_goTypes = []interface{}{
-	(*AddIpRequest)(nil),      // 0: blacklist.AddIpRequest
-	(*AddIpResponse)(nil),     // 1: blacklist.AddIpResponse
+	(*AddIPRequest)(nil),      // 0: blacklist.AddIPRequest
+	(*AddIPResponse)(nil),     // 1: blacklist.AddIPResponse
 	(*RemoveIPRequest)(nil),   // 2: blacklist.RemoveIPRequest
 	(*RemoveIPResponse)(nil),  // 3: blacklist.RemoveIPResponse
-	(*GetIpListRequest)(nil),  // 4: blacklist.GetIpListRequest
-	(*GetIpListResponse)(nil), // 5: blacklist.GetIpListResponse
-	(*IpNetwork)(nil),         // 6: blacklist.IpNetwork
+	(*GetIPListRequest)(nil),  // 4: blacklist.GetIPListRequest
+	(*GetIPListResponse)(nil), // 5: blacklist.GetIPListResponse
+	(*IPNetwork)(nil),         // 6: blacklist.IPNetwork
 }
 var file_blacklist_service_proto_depIdxs = []int32{
-	6, // 0: blacklist.AddIpRequest.ip_network:type_name -> blacklist.IpNetwork
-	6, // 1: blacklist.RemoveIPRequest.ip_network:type_name -> blacklist.IpNetwork
-	6, // 2: blacklist.GetIpListResponse.ip_network:type_name -> blacklist.IpNetwork
-	0, // 3: blacklist.BlackListService.AddIp:input_type -> blacklist.AddIpRequest
-	2, // 4: blacklist.BlackListService.RemoveIp:input_type -> blacklist.RemoveIPRequest
-	4, // 5: blacklist.BlackListService.GetIpList:input_type -> blacklist.GetIpListRequest
-	1, // 6: blacklist.BlackListService.AddIp:output_type -> blacklist.AddIpResponse
-	3, // 7: blacklist.BlackListService.RemoveIp:output_type -> blacklist.RemoveIPResponse
-	5, // 8: blacklist.BlackListService.GetIpList:output_type -> blacklist.GetIpListResponse
+	6, // 0: blacklist.AddIPRequest.ip_network:type_name -> blacklist.IPNetwork
+	6, // 1: blacklist.RemoveIPRequest.ip_network:type_name -> blacklist.IPNetwork
+	6, // 2: blacklist.GetIPListResponse.ip_network:type_name -> blacklist.IPNetwork
+	0, // 3: blacklist.BlackListService.AddIP:input_type -> blacklist.AddIPRequest
+	2, // 4: blacklist.BlackListService.RemoveIP:input_type -> blacklist.RemoveIPRequest
+	4, // 5: blacklist.BlackListService.GetIPList:input_type -> blacklist.GetIPListRequest
+	1, // 6: blacklist.BlackListService.AddIP:output_type -> blacklist.AddIPResponse
+	3, // 7: blacklist.BlackListService.RemoveIP:output_type -> blacklist.RemoveIPResponse
+	5, // 8: blacklist.BlackListService.GetIPList:output_type -> blacklist.GetIPListResponse
 	6, // [6:9] is the sub-list for method output_type
 	3, // [3:6] is the sub-list for method input_type
 	3, // [3:3] is the sub-list for extension type_name
@@ -385,7 +385,7 @@ func file_blacklist_service_proto_init() {
 	file_blacklist_message_proto_init()
 	if !protoimpl.UnsafeEnabled {
 		file_blacklist_service_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AddIpRequest); i {
+			switch v := v.(*AddIPRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -397,7 +397,7 @@ func file_blacklist_service_proto_init() {
 			}
 		}
 		file_blacklist_service_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AddIpResponse); i {
+			switch v := v.(*AddIPResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -433,7 +433,7 @@ func file_blacklist_service_proto_init() {
 			}
 		}
 		file_blacklist_service_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetIpListRequest); i {
+			switch v := v.(*GetIPListRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -445,7 +445,7 @@ func file_blacklist_service_proto_init() {
 			}
 		}
 		file_blacklist_service_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetIpListResponse); i {
+			switch v := v.(*GetIPListResponse); i {
 			case 0:
 				return &v.state
 			case 1:

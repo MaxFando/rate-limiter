@@ -112,19 +112,13 @@ func (l *ZapLoggerWrapper) Fatal(msg interface{}, fields ...zap.Field) {
 		return
 	}
 
-	switch msg.(type) {
+	switch v := msg.(type) {
 	case string:
-		if v, ok := msg.(string); ok {
-			l.zapLogger.Fatal(v, fields...)
-		}
+		l.zapLogger.Fatal(v, fields...)
 	case error:
-		if v, ok := msg.(error); ok {
-			l.zapLogger.Fatal(v.Error(), fields...)
-		}
+		l.zapLogger.Fatal(v.Error(), fields...)
 	case fmt.Stringer:
-		if v, ok := msg.(fmt.Stringer); ok {
-			l.zapLogger.Fatal(v.String(), fields...)
-		}
+		l.zapLogger.Fatal(v.String(), fields...)
 	default:
 		l.zapLogger.Fatal(fmt.Sprintf("%v", msg), fields...)
 	}

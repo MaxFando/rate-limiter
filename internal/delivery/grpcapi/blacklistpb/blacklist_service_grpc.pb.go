@@ -22,9 +22,9 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type BlackListServiceClient interface {
-	AddIp(ctx context.Context, in *AddIpRequest, opts ...grpc.CallOption) (*AddIpResponse, error)
+	AddIp(ctx context.Context, in *AddIPRequest, opts ...grpc.CallOption) (*AddIPResponse, error)
 	RemoveIp(ctx context.Context, in *RemoveIPRequest, opts ...grpc.CallOption) (*RemoveIPResponse, error)
-	GetIpList(ctx context.Context, in *GetIpListRequest, opts ...grpc.CallOption) (BlackListService_GetIpListClient, error)
+	GetIpList(ctx context.Context, in *GetIPListRequest, opts ...grpc.CallOption) (BlackListService_GetIpListClient, error)
 }
 
 type blackListServiceClient struct {
@@ -35,9 +35,9 @@ func NewBlackListServiceClient(cc grpc.ClientConnInterface) BlackListServiceClie
 	return &blackListServiceClient{cc}
 }
 
-func (c *blackListServiceClient) AddIp(ctx context.Context, in *AddIpRequest, opts ...grpc.CallOption) (*AddIpResponse, error) {
-	out := new(AddIpResponse)
-	err := c.cc.Invoke(ctx, "/blacklist.BlackListService/AddIp", in, out, opts...)
+func (c *blackListServiceClient) AddIp(ctx context.Context, in *AddIPRequest, opts ...grpc.CallOption) (*AddIPResponse, error) {
+	out := new(AddIPResponse)
+	err := c.cc.Invoke(ctx, "/blacklist.BlackListService/AddIP", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -46,15 +46,15 @@ func (c *blackListServiceClient) AddIp(ctx context.Context, in *AddIpRequest, op
 
 func (c *blackListServiceClient) RemoveIp(ctx context.Context, in *RemoveIPRequest, opts ...grpc.CallOption) (*RemoveIPResponse, error) {
 	out := new(RemoveIPResponse)
-	err := c.cc.Invoke(ctx, "/blacklist.BlackListService/RemoveIp", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/blacklist.BlackListService/RemoveIP", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *blackListServiceClient) GetIpList(ctx context.Context, in *GetIpListRequest, opts ...grpc.CallOption) (BlackListService_GetIpListClient, error) {
-	stream, err := c.cc.NewStream(ctx, &BlackListService_ServiceDesc.Streams[0], "/blacklist.BlackListService/GetIpList", opts...)
+func (c *blackListServiceClient) GetIpList(ctx context.Context, in *GetIPListRequest, opts ...grpc.CallOption) (BlackListService_GetIpListClient, error) {
+	stream, err := c.cc.NewStream(ctx, &BlackListService_ServiceDesc.Streams[0], "/blacklist.BlackListService/GetIPList", opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -69,7 +69,7 @@ func (c *blackListServiceClient) GetIpList(ctx context.Context, in *GetIpListReq
 }
 
 type BlackListService_GetIpListClient interface {
-	Recv() (*GetIpListResponse, error)
+	Recv() (*GetIPListResponse, error)
 	grpc.ClientStream
 }
 
@@ -77,8 +77,8 @@ type blackListServiceGetIpListClient struct {
 	grpc.ClientStream
 }
 
-func (x *blackListServiceGetIpListClient) Recv() (*GetIpListResponse, error) {
-	m := new(GetIpListResponse)
+func (x *blackListServiceGetIpListClient) Recv() (*GetIPListResponse, error) {
+	m := new(GetIPListResponse)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
 	}
@@ -89,9 +89,9 @@ func (x *blackListServiceGetIpListClient) Recv() (*GetIpListResponse, error) {
 // All implementations must embed UnimplementedBlackListServiceServer
 // for forward compatibility
 type BlackListServiceServer interface {
-	AddIp(context.Context, *AddIpRequest) (*AddIpResponse, error)
-	RemoveIp(context.Context, *RemoveIPRequest) (*RemoveIPResponse, error)
-	GetIpList(*GetIpListRequest, BlackListService_GetIpListServer) error
+	AddIP(context.Context, *AddIPRequest) (*AddIPResponse, error)
+	RemoveIP(context.Context, *RemoveIPRequest) (*RemoveIPResponse, error)
+	GetIPList(*GetIPListRequest, BlackListService_GetIpListServer) error
 	mustEmbedUnimplementedBlackListServiceServer()
 }
 
@@ -99,14 +99,14 @@ type BlackListServiceServer interface {
 type UnimplementedBlackListServiceServer struct {
 }
 
-func (UnimplementedBlackListServiceServer) AddIp(context.Context, *AddIpRequest) (*AddIpResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AddIp not implemented")
+func (UnimplementedBlackListServiceServer) AddIP(context.Context, *AddIPRequest) (*AddIPResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AddIP not implemented")
 }
-func (UnimplementedBlackListServiceServer) RemoveIp(context.Context, *RemoveIPRequest) (*RemoveIPResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method RemoveIp not implemented")
+func (UnimplementedBlackListServiceServer) RemoveIP(context.Context, *RemoveIPRequest) (*RemoveIPResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RemoveIP not implemented")
 }
-func (UnimplementedBlackListServiceServer) GetIpList(*GetIpListRequest, BlackListService_GetIpListServer) error {
-	return status.Errorf(codes.Unimplemented, "method GetIpList not implemented")
+func (UnimplementedBlackListServiceServer) GetIPList(*GetIPListRequest, BlackListService_GetIpListServer) error {
+	return status.Errorf(codes.Unimplemented, "method GetIPList not implemented")
 }
 func (UnimplementedBlackListServiceServer) mustEmbedUnimplementedBlackListServiceServer() {}
 
@@ -122,19 +122,19 @@ func RegisterBlackListServiceServer(s grpc.ServiceRegistrar, srv BlackListServic
 }
 
 func _BlackListService_AddIp_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(AddIpRequest)
+	in := new(AddIPRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(BlackListServiceServer).AddIp(ctx, in)
+		return srv.(BlackListServiceServer).AddIP(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/blacklist.BlackListService/AddIp",
+		FullMethod: "/blacklist.BlackListService/AddIP",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BlackListServiceServer).AddIp(ctx, req.(*AddIpRequest))
+		return srv.(BlackListServiceServer).AddIP(ctx, req.(*AddIPRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -145,28 +145,28 @@ func _BlackListService_RemoveIp_Handler(srv interface{}, ctx context.Context, de
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(BlackListServiceServer).RemoveIp(ctx, in)
+		return srv.(BlackListServiceServer).RemoveIP(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/blacklist.BlackListService/RemoveIp",
+		FullMethod: "/blacklist.BlackListService/RemoveIP",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BlackListServiceServer).RemoveIp(ctx, req.(*RemoveIPRequest))
+		return srv.(BlackListServiceServer).RemoveIP(ctx, req.(*RemoveIPRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _BlackListService_GetIpList_Handler(srv interface{}, stream grpc.ServerStream) error {
-	m := new(GetIpListRequest)
+	m := new(GetIPListRequest)
 	if err := stream.RecvMsg(m); err != nil {
 		return err
 	}
-	return srv.(BlackListServiceServer).GetIpList(m, &blackListServiceGetIpListServer{stream})
+	return srv.(BlackListServiceServer).GetIPList(m, &blackListServiceGetIpListServer{stream})
 }
 
 type BlackListService_GetIpListServer interface {
-	Send(*GetIpListResponse) error
+	Send(*GetIPListResponse) error
 	grpc.ServerStream
 }
 
@@ -174,7 +174,7 @@ type blackListServiceGetIpListServer struct {
 	grpc.ServerStream
 }
 
-func (x *blackListServiceGetIpListServer) Send(m *GetIpListResponse) error {
+func (x *blackListServiceGetIpListServer) Send(m *GetIPListResponse) error {
 	return x.ServerStream.SendMsg(m)
 }
 
@@ -186,17 +186,17 @@ var BlackListService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*BlackListServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "AddIp",
+			MethodName: "AddIP",
 			Handler:    _BlackListService_AddIp_Handler,
 		},
 		{
-			MethodName: "RemoveIp",
+			MethodName: "RemoveIP",
 			Handler:    _BlackListService_RemoveIp_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{
 		{
-			StreamName:    "GetIpList",
+			StreamName:    "GetIPList",
 			Handler:       _BlackListService_GetIpList_Handler,
 			ServerStreams: true,
 		},

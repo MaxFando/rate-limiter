@@ -14,19 +14,19 @@ func init() {
 	validatePattern = regexp.MustCompile(`(?m)^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)\.?\b){4}$`)
 }
 
-type Ip struct {
+type IP struct {
 	value string
 }
 
-func New(ip string) (Ip, error) {
+func New(ip string) (IP, error) {
 	if !isCorrectIP(ip) {
-		return Ip{}, ErrInvalidIPFormat
+		return IP{}, ErrInvalidIPFormat
 	}
 
-	return Ip{value: ip}, nil
+	return IP{value: ip}, nil
 }
 
-func (i Ip) String() string {
+func (i IP) String() string {
 	return i.value
 }
 

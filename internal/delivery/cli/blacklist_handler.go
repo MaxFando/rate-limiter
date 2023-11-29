@@ -6,49 +6,55 @@ import (
 	"github.com/MaxFando/rate-limiter/internal/domain/network"
 )
 
+const (
+	addCommand    = "add"
+	removeCommand = "remove"
+	getCommand    = "get"
+)
+
 func (c *CommandLineInterface) blackListHandler(ctx context.Context, setCommand []string) {
 	switch setCommand[1] {
-	case "add":
+	case addCommand:
 		if len(setCommand) != 4 {
 			break
 		}
 
-		ipNetwork, err := network.NewIpNetwork(setCommand[2], setCommand[3])
+		ipNetwork, err := network.NewIPNetwork(setCommand[2], setCommand[3])
 		if err != nil {
-			fmt.Printf("bootExecutor - blacklist add: %w", err)
+			fmt.Printf("bootExecutor - blacklist add: %s", err.Error())
 			return
 		}
 
-		c.addIpToBl(ctx, ipNetwork)
-	case "remove":
+		c.addIPToBl(ctx, ipNetwork)
+	case removeCommand:
 		if len(setCommand) != 4 {
 			break
 		}
 
-		ipNetwork, err := network.NewIpNetwork(setCommand[2], setCommand[3])
+		ipNetwork, err := network.NewIPNetwork(setCommand[2], setCommand[3])
 		if err != nil {
-			fmt.Printf("bootExecutor - blacklist remove: %w", err)
+			fmt.Printf("bootExecutor - blacklist remove: %s", err.Error())
 			return
 		}
-		c.removeIpToBl(ctx, ipNetwork)
-	case "get":
-		c.getIpListFromBl(ctx)
+		c.removeIPToBl(ctx, ipNetwork)
+	case getCommand:
+		c.getIPListFromBl(ctx)
 	default:
 		fmt.Println("unknown command")
 	}
 }
 
-func (c *CommandLineInterface) addIpToBl(ctx context.Context, ipNet network.IpNetwork) {
+func (c *CommandLineInterface) addIPToBl(ctx context.Context, ipNet network.IPNetwork) {
 	err := c.blackListUseCase.AddIP(ctx, ipNet)
 	if err != nil {
-		fmt.Printf("addIpToBl: %w", err)
+		fmt.Printf("addIPToBl: %s", err.Error())
 		return
 	}
 
 	fmt.Printf("add address: %v to blacklist", ipNet)
 }
 
-func (c *CommandLineInterface) removeIpToBl(ctx context.Context, ipNet network.IpNetwork) {
+func (c *CommandLineInterface) removeIPToBl(ctx context.Context, ipNet network.IPNetwork) {
 	err := c.blackListUseCase.RemoveIP(ctx, ipNet)
 	if err != nil {
 		fmt.Printf("service error: %v \n", err)
@@ -57,7 +63,7 @@ func (c *CommandLineInterface) removeIpToBl(ctx context.Context, ipNet network.I
 	fmt.Printf("remove address: %v from blacklist \n", ipNet)
 }
 
-func (c *CommandLineInterface) getIpListFromBl(ctx context.Context) {
+func (c *CommandLineInterface) getIPListFromBl(ctx context.Context) {
 	list, err := c.blackListUseCase.GetIPList(ctx)
 	if err != nil {
 		return

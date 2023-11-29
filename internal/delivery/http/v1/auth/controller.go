@@ -20,7 +20,7 @@ func NewAuthController(usecase *auth.UseCase) *Controller {
 type tryAuthorizationRequest struct {
 	Login    string `json:"login" query:"login" validate:"required"`
 	Password string `json:"password" query:"password" validate:"required"`
-	Ip       string `json:"ip" query:"ip" validate:"required"`
+	IP       string `json:"ip" query:"ip" validate:"required"`
 }
 
 func (ctr *Controller) TryAuthorization(c echo.Context) error {
@@ -35,7 +35,7 @@ func (ctr *Controller) TryAuthorization(c echo.Context) error {
 		return c.JSON(422, map[string]interface{}{"ok": false, "error": err.Error()})
 	}
 
-	payload, err := network.NewRequest(request.Login, request.Password, request.Ip)
+	payload, err := network.NewRequest(request.Login, request.Password, request.IP)
 	if err != nil {
 		return c.JSON(500, map[string]interface{}{"ok": false, "error": err.Error()})
 	}

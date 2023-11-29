@@ -17,7 +17,7 @@ func (c *CommandLineInterface) bucketHandler(ctx context.Context, setCommand []s
 			setCommand[3],
 		)
 		if err != nil {
-			fmt.Printf("bootExecutor - bucket reset: %w", err)
+			fmt.Printf("bootExecutor - bucket reset: %s", err.Error())
 			return
 		}
 
@@ -28,7 +28,7 @@ func (c *CommandLineInterface) bucketHandler(ctx context.Context, setCommand []s
 }
 
 func (c *CommandLineInterface) resetBucket(ctx context.Context, request network.Request) {
-	isLoginReset, isIpReset, err := c.bucketUseCase.Reset(ctx, request.Login, request.Ip.String())
+	isLoginReset, isIPReset, err := c.bucketUseCase.Reset(ctx, request.Login, request.IP.String())
 	if err != nil {
 		fmt.Printf("service error: %v \n", err)
 		return
@@ -40,9 +40,9 @@ func (c *CommandLineInterface) resetBucket(ctx context.Context, request network.
 		fmt.Printf("login: %v has been reseted\n", request.Login)
 	}
 
-	if !isIpReset {
-		fmt.Printf("ip: %v has not been reseted\n", request.Ip)
+	if !isIPReset {
+		fmt.Printf("ip: %v has not been reseted\n", request.IP)
 	} else {
-		fmt.Printf("ip: %v has been reseted\n", request.Ip)
+		fmt.Printf("ip: %v has been reseted\n", request.IP)
 	}
 }

@@ -16,7 +16,7 @@ func NewController(uc *bucket.UseCase) *Controller {
 
 type resetBucketRequest struct {
 	Login string `json:"login"`
-	Ip    string `json:"ip"`
+	IP    string `json:"ip"`
 }
 
 func (ctr *Controller) ResetBucket(c echo.Context) error {
@@ -31,10 +31,10 @@ func (ctr *Controller) ResetBucket(c echo.Context) error {
 		return echo.NewHTTPError(422, err.Error())
 	}
 
-	isLoginReset, isIpReset, err := ctr.uc.Reset(ctx, request.Login, request.Ip)
+	isLoginReset, isIPReset, err := ctr.uc.Reset(ctx, request.Login, request.IP)
 	if err != nil {
 		return echo.NewHTTPError(500, err.Error())
 	}
 
-	return c.JSON(200, map[string]bool{"ok": isLoginReset && isIpReset})
+	return c.JSON(200, map[string]bool{"ok": isLoginReset && isIPReset})
 }

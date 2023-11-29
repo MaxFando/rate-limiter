@@ -16,14 +16,15 @@ type Server struct {
 	errors chan error
 }
 
-func NewHttpServer(handler http.Handler, port string) *Server {
+func NewHTTPServer(handler http.Handler, port string) *Server {
 	if port == "" {
 		port = _defaultAddr
 	}
 
 	httpServer := &http.Server{
-		Handler: handler,
-		Addr:    port,
+		Handler:           handler,
+		Addr:              port,
+		ReadHeaderTimeout: 10 * time.Second,
 	}
 
 	return &Server{

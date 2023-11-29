@@ -5,12 +5,12 @@ import (
 	"strings"
 )
 
-func GetPrefix(inputIp string, inputMask string) (string, error) {
-	ip := strings.Split(inputIp, ".")
+func GetPrefix(inputIP string, inputMask string) (string, error) {
+	ip := strings.Split(inputIP, ".")
 	mask := strings.Split(inputMask, ".")
 	var prefix string
 	for index, ipOct := range ip {
-		intIpOct, err := strconv.Atoi(ipOct)
+		intIPOct, err := strconv.Atoi(ipOct)
 		if err != nil {
 			return "", err
 		}
@@ -18,7 +18,7 @@ func GetPrefix(inputIp string, inputMask string) (string, error) {
 		if err != nil {
 			return "", err
 		}
-		prefix += strconv.Itoa(intIpOct & intMaskOct)
+		prefix += strconv.Itoa(intIPOct & intMaskOct)
 		if index != len(ip)-1 {
 			prefix += "."
 		}

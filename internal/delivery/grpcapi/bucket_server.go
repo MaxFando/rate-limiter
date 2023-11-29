@@ -16,10 +16,10 @@ func NewBucketServer(uc *bucket.UseCase) *BucketServer {
 }
 
 func (s *BucketServer) ResetBucket(ctx context.Context, req *bucketpb.ResetBucketRequest) (*bucketpb.ResetBucketResponse, error) {
-	isLoginReset, isIpReset, err := s.uc.Reset(ctx, req.Request.Login, req.Request.Ip)
+	isLoginReset, isIPReset, err := s.uc.Reset(ctx, req.Request.Login, req.Request.Ip)
 	if err != nil {
 		return nil, err
 	}
 
-	return &bucketpb.ResetBucketResponse{ResetIp: isIpReset, ResetLogin: isLoginReset}, nil
+	return &bucketpb.ResetBucketResponse{ResetIp: isIPReset, ResetLogin: isLoginReset}, nil
 }

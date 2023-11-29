@@ -17,15 +17,15 @@ func NewController(usecase *whitelist.UseCase) *Controller {
 	}
 }
 
-type addIpRequest struct {
-	Ip   string `json:"ip" query:"ip" validate:"required"`
+type addIPRequest struct {
+	IP   string `json:"ip" query:"ip" validate:"required"`
 	Mask string `json:"mask" query:"mask" validate:"required"`
 }
 
 func (ctr *Controller) AddIP(c echo.Context) error {
 	ctx := c.Request().Context()
 
-	request := new(addIpRequest)
+	request := new(addIPRequest)
 	if err := c.Bind(request); err != nil {
 		return c.JSON(500, map[string]interface{}{"ok": false, "error": err.Error()})
 	}
@@ -34,7 +34,7 @@ func (ctr *Controller) AddIP(c echo.Context) error {
 		return c.JSON(422, map[string]interface{}{"ok": false, "error": err.Error()})
 	}
 
-	payload, err := network.NewIpNetwork(request.Ip, request.Mask)
+	payload, err := network.NewIPNetwork(request.IP, request.Mask)
 	if err != nil {
 		return c.JSON(500, map[string]interface{}{"ok": false, "error": err.Error()})
 	}
@@ -47,15 +47,15 @@ func (ctr *Controller) AddIP(c echo.Context) error {
 	return c.JSON(200, map[string]interface{}{"ok": true})
 }
 
-type removeIpRequest struct {
-	Ip   string `json:"ip" query:"ip" validate:"required"`
+type removeIPRequest struct {
+	IP   string `json:"ip" query:"ip" validate:"required"`
 	Mask string `json:"mask" query:"mask" validate:"required"`
 }
 
 func (ctr *Controller) RemoveIP(c echo.Context) error {
 	ctx := c.Request().Context()
 
-	request := new(removeIpRequest)
+	request := new(removeIPRequest)
 	if err := c.Bind(request); err != nil {
 		return c.JSON(500, map[string]interface{}{"ok": false, "error": err.Error()})
 	}
@@ -64,7 +64,7 @@ func (ctr *Controller) RemoveIP(c echo.Context) error {
 		return c.JSON(422, map[string]interface{}{"ok": false, "error": err.Error()})
 	}
 
-	payload, err := network.NewIpNetwork(request.Ip, request.Mask)
+	payload, err := network.NewIPNetwork(request.IP, request.Mask)
 	if err != nil {
 		return c.JSON(500, map[string]interface{}{"ok": false, "error": err.Error()})
 	}

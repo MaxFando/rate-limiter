@@ -30,11 +30,11 @@ func TestService_AddIP(t *testing.T) {
 		mockStore = new(mocks.Store)
 		s := blacklist.NewService(mockStore)
 
-		payload, _ := network.NewIpNetwork(
+		payload, _ := network.NewIPNetwork(
 			"192.168.1.1",
 			"255.255.255.0",
 		)
-		prefix, _ := utils.GetPrefix(payload.Ip.String(), payload.Mask.String())
+		prefix, _ := utils.GetPrefix(payload.IP.String(), payload.Mask.String())
 
 		mockStore.On("Add", mock.Anything, prefix, payload.Mask.String()).Return(nil)
 
@@ -46,11 +46,11 @@ func TestService_AddIP(t *testing.T) {
 		mockStore = new(mocks.Store)
 		s := blacklist.NewService(mockStore)
 
-		payload, _ := network.NewIpNetwork(
+		payload, _ := network.NewIPNetwork(
 			"192.168.1.1",
 			"255.255.255.0",
 		)
-		prefix, _ := utils.GetPrefix(payload.Ip.String(), payload.Mask.String())
+		prefix, _ := utils.GetPrefix(payload.IP.String(), payload.Mask.String())
 
 		errMock := errors.New("tests")
 		mockStore.On("Add", mock.Anything, prefix, payload.Mask.String()).Return(errMock)

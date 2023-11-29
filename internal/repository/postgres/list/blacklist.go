@@ -45,8 +45,8 @@ func (r *BlackListRepository) Remove(ctx context.Context, prefix string, mask st
 	return r.client.Connection["default"].WithContext(ctx).Exec(deleteIPBl, prefix, mask).Error
 }
 
-func (r *BlackListRepository) Get(ctx context.Context) ([]network.IpNetwork, error) {
-	ipNetworkList := make([]network.IpNetwork, 0, 5)
+func (r *BlackListRepository) Get(ctx context.Context) ([]network.IPNetwork, error) {
+	ipNetworkList := make([]network.IPNetwork, 0, 5)
 	err := r.client.Connection["default"].WithContext(ctx).Raw(getIPListBl).Scan(&ipNetworkList).Error
 	if err != nil {
 		return nil, err

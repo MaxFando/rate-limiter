@@ -22,7 +22,7 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type WhiteListServiceClient interface {
-	AddIp(ctx context.Context, in *AddIpRequest, opts ...grpc.CallOption) (*AddIpResponse, error)
+	AddIp(ctx context.Context, in *AddIPRequest, opts ...grpc.CallOption) (*AddIPResponse, error)
 	RemoveIp(ctx context.Context, in *RemoveIPRequest, opts ...grpc.CallOption) (*RemoveIPResponse, error)
 	GetIpList(ctx context.Context, in *GetIpListRequest, opts ...grpc.CallOption) (WhiteListService_GetIpListClient, error)
 }
@@ -35,9 +35,9 @@ func NewWhiteListServiceClient(cc grpc.ClientConnInterface) WhiteListServiceClie
 	return &whiteListServiceClient{cc}
 }
 
-func (c *whiteListServiceClient) AddIp(ctx context.Context, in *AddIpRequest, opts ...grpc.CallOption) (*AddIpResponse, error) {
-	out := new(AddIpResponse)
-	err := c.cc.Invoke(ctx, "/whitelist.WhiteListService/AddIp", in, out, opts...)
+func (c *whiteListServiceClient) AddIp(ctx context.Context, in *AddIPRequest, opts ...grpc.CallOption) (*AddIPResponse, error) {
+	out := new(AddIPResponse)
+	err := c.cc.Invoke(ctx, "/whitelist.WhiteListService/AddIP", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -46,7 +46,7 @@ func (c *whiteListServiceClient) AddIp(ctx context.Context, in *AddIpRequest, op
 
 func (c *whiteListServiceClient) RemoveIp(ctx context.Context, in *RemoveIPRequest, opts ...grpc.CallOption) (*RemoveIPResponse, error) {
 	out := new(RemoveIPResponse)
-	err := c.cc.Invoke(ctx, "/whitelist.WhiteListService/RemoveIp", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/whitelist.WhiteListService/RemoveIP", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -54,7 +54,7 @@ func (c *whiteListServiceClient) RemoveIp(ctx context.Context, in *RemoveIPReque
 }
 
 func (c *whiteListServiceClient) GetIpList(ctx context.Context, in *GetIpListRequest, opts ...grpc.CallOption) (WhiteListService_GetIpListClient, error) {
-	stream, err := c.cc.NewStream(ctx, &WhiteListService_ServiceDesc.Streams[0], "/whitelist.WhiteListService/GetIpList", opts...)
+	stream, err := c.cc.NewStream(ctx, &WhiteListService_ServiceDesc.Streams[0], "/whitelist.WhiteListService/GetIPList", opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -69,7 +69,7 @@ func (c *whiteListServiceClient) GetIpList(ctx context.Context, in *GetIpListReq
 }
 
 type WhiteListService_GetIpListClient interface {
-	Recv() (*GetIpListResponse, error)
+	Recv() (*GetIPListResponse, error)
 	grpc.ClientStream
 }
 
@@ -77,8 +77,8 @@ type whiteListServiceGetIpListClient struct {
 	grpc.ClientStream
 }
 
-func (x *whiteListServiceGetIpListClient) Recv() (*GetIpListResponse, error) {
-	m := new(GetIpListResponse)
+func (x *whiteListServiceGetIpListClient) Recv() (*GetIPListResponse, error) {
+	m := new(GetIPListResponse)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
 	}
@@ -89,7 +89,7 @@ func (x *whiteListServiceGetIpListClient) Recv() (*GetIpListResponse, error) {
 // All implementations must embed UnimplementedWhiteListServiceServer
 // for forward compatibility
 type WhiteListServiceServer interface {
-	AddIp(context.Context, *AddIpRequest) (*AddIpResponse, error)
+	AddIp(context.Context, *AddIPRequest) (*AddIPResponse, error)
 	RemoveIp(context.Context, *RemoveIPRequest) (*RemoveIPResponse, error)
 	GetIpList(*GetIpListRequest, WhiteListService_GetIpListServer) error
 	mustEmbedUnimplementedWhiteListServiceServer()
@@ -99,14 +99,14 @@ type WhiteListServiceServer interface {
 type UnimplementedWhiteListServiceServer struct {
 }
 
-func (UnimplementedWhiteListServiceServer) AddIp(context.Context, *AddIpRequest) (*AddIpResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AddIp not implemented")
+func (UnimplementedWhiteListServiceServer) AddIp(context.Context, *AddIPRequest) (*AddIPResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AddIP not implemented")
 }
 func (UnimplementedWhiteListServiceServer) RemoveIp(context.Context, *RemoveIPRequest) (*RemoveIPResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method RemoveIp not implemented")
+	return nil, status.Errorf(codes.Unimplemented, "method RemoveIP not implemented")
 }
 func (UnimplementedWhiteListServiceServer) GetIpList(*GetIpListRequest, WhiteListService_GetIpListServer) error {
-	return status.Errorf(codes.Unimplemented, "method GetIpList not implemented")
+	return status.Errorf(codes.Unimplemented, "method GetIPList not implemented")
 }
 func (UnimplementedWhiteListServiceServer) mustEmbedUnimplementedWhiteListServiceServer() {}
 
@@ -122,7 +122,7 @@ func RegisterWhiteListServiceServer(s grpc.ServiceRegistrar, srv WhiteListServic
 }
 
 func _WhiteListService_AddIp_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(AddIpRequest)
+	in := new(AddIPRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -131,10 +131,10 @@ func _WhiteListService_AddIp_Handler(srv interface{}, ctx context.Context, dec f
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/whitelist.WhiteListService/AddIp",
+		FullMethod: "/whitelist.WhiteListService/AddIP",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(WhiteListServiceServer).AddIp(ctx, req.(*AddIpRequest))
+		return srv.(WhiteListServiceServer).AddIp(ctx, req.(*AddIPRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -149,7 +149,7 @@ func _WhiteListService_RemoveIp_Handler(srv interface{}, ctx context.Context, de
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/whitelist.WhiteListService/RemoveIp",
+		FullMethod: "/whitelist.WhiteListService/RemoveIP",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(WhiteListServiceServer).RemoveIp(ctx, req.(*RemoveIPRequest))
@@ -166,7 +166,7 @@ func _WhiteListService_GetIpList_Handler(srv interface{}, stream grpc.ServerStre
 }
 
 type WhiteListService_GetIpListServer interface {
-	Send(*GetIpListResponse) error
+	Send(*GetIPListResponse) error
 	grpc.ServerStream
 }
 
@@ -174,7 +174,7 @@ type whiteListServiceGetIpListServer struct {
 	grpc.ServerStream
 }
 
-func (x *whiteListServiceGetIpListServer) Send(m *GetIpListResponse) error {
+func (x *whiteListServiceGetIpListServer) Send(m *GetIPListResponse) error {
 	return x.ServerStream.SendMsg(m)
 }
 
@@ -186,17 +186,17 @@ var WhiteListService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*WhiteListServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "AddIp",
+			MethodName: "AddIP",
 			Handler:    _WhiteListService_AddIp_Handler,
 		},
 		{
-			MethodName: "RemoveIp",
+			MethodName: "RemoveIP",
 			Handler:    _WhiteListService_RemoveIp_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{
 		{
-			StreamName:    "GetIpList",
+			StreamName:    "GetIPList",
 			Handler:       _WhiteListService_GetIpList_Handler,
 			ServerStreams: true,
 		},

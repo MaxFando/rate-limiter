@@ -13,8 +13,8 @@ type Service struct {
 	mock.Mock
 }
 
-// ResetIpBucket provides a mock function with given fields: ctx, ip
-func (_m *Service) ResetIpBucket(ctx context.Context, ip string) bool {
+// ResetIPBucket provides a mock function with given fields: ctx, ip
+func (_m *Service) ResetIPBucket(ctx context.Context, ip string) bool {
 	ret := _m.Called(ctx, ip)
 
 	var r0 bool

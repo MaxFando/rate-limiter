@@ -9,48 +9,48 @@ import (
 type Request struct {
 	Login    string `json:"login"`
 	Password string `json:"password"`
-	Ip       ip.Ip  `json:"ip"`
+	IP       ip.IP  `json:"ip"`
 }
 
 func NewRequest(
-	Login string,
-	Password string,
-	Ip string,
+	login string,
+	password string,
+	ipNew string,
 ) (Request, error) {
-	if Login == "" || Password == "" {
+	if login == "" || password == "" {
 		return Request{}, errors.New("login or password is empty")
 	}
 
-	_ip, err := ip.New(Ip)
+	_ip, err := ip.New(ipNew)
 	if err != nil {
 		return Request{}, err
 	}
 
 	return Request{
-		Login:    Login,
-		Password: Password,
-		Ip:       _ip,
+		Login:    login,
+		Password: password,
+		IP:       _ip,
 	}, nil
 }
 
-type IpNetwork struct {
-	Ip   ip.Ip     `json:"ip" db:"prefix"`
+type IPNetwork struct {
+	IP   ip.IP     `json:"ip" db:"prefix"`
 	Mask mask.Mask `json:"mask" db:"mask"`
 }
 
-func NewIpNetwork(ipValue string, maskValue string) (IpNetwork, error) {
+func NewIPNetwork(ipValue string, maskValue string) (IPNetwork, error) {
 	_ip, err := ip.New(ipValue)
 	if err != nil {
-		return IpNetwork{}, err
+		return IPNetwork{}, err
 	}
 
 	_mask, err := mask.New(maskValue)
 	if err != nil {
-		return IpNetwork{}, err
+		return IPNetwork{}, err
 	}
 
-	return IpNetwork{
-		Ip:   _ip,
+	return IPNetwork{
+		IP:   _ip,
 		Mask: _mask,
 	}, nil
 }

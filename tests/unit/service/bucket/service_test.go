@@ -14,7 +14,7 @@ import (
 )
 
 var (
-	mockIpBucketRepo       *mocks.Repository
+	mockIPBucketRepo       *mocks.Repository
 	mockLoginBucketRepo    *mocks.Repository
 	mockPasswordBucketRepo *mocks.Repository
 )
@@ -30,12 +30,12 @@ func TestMain(m *testing.M) {
 func TestService_TryGetPermissionInLoginBucket(t *testing.T) {
 	t.Run("success", func(t *testing.T) {
 		mockLoginBucketRepo = new(mocks.Repository)
-		mockIpBucketRepo = new(mocks.Repository)
+		mockIPBucketRepo = new(mocks.Repository)
 		mockPasswordBucketRepo = new(mocks.Repository)
 
 		limit := 10
 		mockLoginBucketRepo.On("TryGetPermissionInBucket", mock.Anything, keyLogin, limit).Return(true)
-		s := bucket.NewService(mockIpBucketRepo, mockLoginBucketRepo, mockPasswordBucketRepo)
+		s := bucket.NewService(mockIPBucketRepo, mockLoginBucketRepo, mockPasswordBucketRepo)
 
 		allow := s.TryGetPermissionInLoginBucket(context.TODO(), keyLogin, limit)
 		assert.True(t, allow)
@@ -45,17 +45,17 @@ func TestService_TryGetPermissionInLoginBucket(t *testing.T) {
 func TestService_TryGetPermissionInPasswordBucket(t *testing.T) {
 	t.Run("success", func(t *testing.T) {
 		mockLoginBucketRepo = new(mocks.Repository)
-		mockIpBucketRepo = new(mocks.Repository)
+		mockIPBucketRepo = new(mocks.Repository)
 		mockPasswordBucketRepo = new(mocks.Repository)
 
 		mockLoginBucketRepo.On("DeleteUnusedBucket", mock.Anything)
-		mockIpBucketRepo.On("DeleteUnusedBucket", mock.Anything)
+		mockIPBucketRepo.On("DeleteUnusedBucket", mock.Anything)
 		mockPasswordBucketRepo.On("DeleteUnusedBucket", mock.Anything)
 
 		key := "password"
 		limit := 10
 		mockPasswordBucketRepo.On("TryGetPermissionInBucket", mock.Anything, key, limit).Return(true)
-		s := bucket.NewService(mockIpBucketRepo, mockPasswordBucketRepo, mockPasswordBucketRepo)
+		s := bucket.NewService(mockIPBucketRepo, mockPasswordBucketRepo, mockPasswordBucketRepo)
 
 		allow := s.TryGetPermissionInPasswordBucket(context.TODO(), key, limit)
 		assert.True(t, allow)
@@ -65,15 +65,15 @@ func TestService_TryGetPermissionInPasswordBucket(t *testing.T) {
 func TestService_ResetLoginBucket(t *testing.T) {
 	t.Run("success", func(t *testing.T) {
 		mockLoginBucketRepo = new(mocks.Repository)
-		mockIpBucketRepo = new(mocks.Repository)
+		mockIPBucketRepo = new(mocks.Repository)
 		mockPasswordBucketRepo = new(mocks.Repository)
 
 		mockLoginBucketRepo.On("DeleteUnusedBucket", mock.Anything)
-		mockIpBucketRepo.On("DeleteUnusedBucket", mock.Anything)
+		mockIPBucketRepo.On("DeleteUnusedBucket", mock.Anything)
 		mockPasswordBucketRepo.On("DeleteUnusedBucket", mock.Anything)
 
 		mockLoginBucketRepo.On("ResetBucket", mock.Anything, keyLogin).Return(true)
-		s := bucket.NewService(mockIpBucketRepo, mockLoginBucketRepo, mockPasswordBucketRepo)
+		s := bucket.NewService(mockIPBucketRepo, mockLoginBucketRepo, mockPasswordBucketRepo)
 
 		allow := s.ResetLoginBucket(context.TODO(), keyLogin)
 		assert.True(t, allow)
@@ -83,17 +83,17 @@ func TestService_ResetLoginBucket(t *testing.T) {
 func TestService_ResetIpBucket(t *testing.T) {
 	t.Run("success", func(t *testing.T) {
 		mockLoginBucketRepo = new(mocks.Repository)
-		mockIpBucketRepo = new(mocks.Repository)
+		mockIPBucketRepo = new(mocks.Repository)
 		mockPasswordBucketRepo = new(mocks.Repository)
 
 		mockLoginBucketRepo.On("DeleteUnusedBucket", mock.Anything)
-		mockIpBucketRepo.On("DeleteUnusedBucket", mock.Anything)
+		mockIPBucketRepo.On("DeleteUnusedBucket", mock.Anything)
 		mockPasswordBucketRepo.On("DeleteUnusedBucket", mock.Anything)
 
-		mockIpBucketRepo.On("ResetBucket", mock.Anything, keyLogin).Return(true)
-		s := bucket.NewService(mockIpBucketRepo, mockLoginBucketRepo, mockPasswordBucketRepo)
+		mockIPBucketRepo.On("ResetBucket", mock.Anything, keyLogin).Return(true)
+		s := bucket.NewService(mockIPBucketRepo, mockLoginBucketRepo, mockPasswordBucketRepo)
 
-		allow := s.ResetIpBucket(context.TODO(), keyLogin)
+		allow := s.ResetIPBucket(context.TODO(), keyLogin)
 		assert.True(t, allow)
 	})
 }

@@ -10,7 +10,7 @@ import (
 type Store interface {
 	Add(ctx context.Context, prefix string, mask string) error
 	Remove(ctx context.Context, prefix string, mask string) error
-	Get(ctx context.Context) ([]network.IpNetwork, error)
+	Get(ctx context.Context) ([]network.IPNetwork, error)
 }
 
 type Service struct {
@@ -21,9 +21,8 @@ func NewService(store Store) *Service {
 	return &Service{store: store}
 }
 
-func (s *Service) AddIP(ctx context.Context, network network.IpNetwork) error {
-
-	prefix, err := utils.GetPrefix(network.Ip.String(), network.Mask.String())
+func (s *Service) AddIP(ctx context.Context, network network.IPNetwork) error {
+	prefix, err := utils.GetPrefix(network.IP.String(), network.Mask.String())
 	if err != nil {
 		return err
 	}
@@ -34,9 +33,8 @@ func (s *Service) AddIP(ctx context.Context, network network.IpNetwork) error {
 	return nil
 }
 
-func (s *Service) RemoveIP(ctx context.Context, network network.IpNetwork) error {
-
-	prefix, err := utils.GetPrefix(network.Ip.String(), network.Mask.String())
+func (s *Service) RemoveIP(ctx context.Context, network network.IPNetwork) error {
+	prefix, err := utils.GetPrefix(network.IP.String(), network.Mask.String())
 	if err != nil {
 		return err
 	}
@@ -47,8 +45,7 @@ func (s *Service) RemoveIP(ctx context.Context, network network.IpNetwork) error
 	return nil
 }
 
-func (s *Service) GetIPList(ctx context.Context) ([]network.IpNetwork, error) {
-
+func (s *Service) GetIPList(ctx context.Context) ([]network.IPNetwork, error) {
 	ipList, err := s.store.Get(ctx)
 	if err != nil {
 		return nil, err

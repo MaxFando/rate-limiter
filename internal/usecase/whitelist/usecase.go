@@ -7,9 +7,9 @@ import (
 )
 
 type Service interface {
-	AddIP(ctx context.Context, network network.IpNetwork) error
-	RemoveIP(ctx context.Context, network network.IpNetwork) error
-	GetIPList(ctx context.Context) ([]network.IpNetwork, error)
+	AddIP(ctx context.Context, network network.IPNetwork) error
+	RemoveIP(ctx context.Context, network network.IPNetwork) error
+	GetIPList(ctx context.Context) ([]network.IPNetwork, error)
 }
 
 type UseCase struct {
@@ -20,17 +20,14 @@ func NewUseCase(whiteListService Service) *UseCase {
 	return &UseCase{whiteListService: whiteListService}
 }
 
-func (u *UseCase) AddIP(ctx context.Context, network network.IpNetwork) error {
-
+func (u *UseCase) AddIP(ctx context.Context, network network.IPNetwork) error {
 	return u.whiteListService.AddIP(ctx, network)
 }
 
-func (u *UseCase) RemoveIP(ctx context.Context, network network.IpNetwork) error {
-
+func (u *UseCase) RemoveIP(ctx context.Context, network network.IPNetwork) error {
 	return u.whiteListService.RemoveIP(ctx, network)
 }
 
-func (u *UseCase) GetIPList(ctx context.Context) ([]network.IpNetwork, error) {
-
+func (u *UseCase) GetIPList(ctx context.Context) ([]network.IPNetwork, error) {
 	return u.whiteListService.GetIPList(ctx)
 }

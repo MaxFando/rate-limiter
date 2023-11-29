@@ -15,11 +15,11 @@ type Service struct {
 }
 
 // AddIP provides a mock function with given fields: ctx, _a1
-func (_m *Service) AddIP(ctx context.Context, _a1 network.IpNetwork) error {
+func (_m *Service) AddIP(ctx context.Context, _a1 network.IPNetwork) error {
 	ret := _m.Called(ctx, _a1)
 
 	var r0 error
-	if rf, ok := ret.Get(0).(func(context.Context, network.IpNetwork) error); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, network.IPNetwork) error); ok {
 		r0 = rf(ctx, _a1)
 	} else {
 		r0 = ret.Error(0)
@@ -29,19 +29,19 @@ func (_m *Service) AddIP(ctx context.Context, _a1 network.IpNetwork) error {
 }
 
 // GetIPList provides a mock function with given fields: ctx
-func (_m *Service) GetIPList(ctx context.Context) ([]network.IpNetwork, error) {
+func (_m *Service) GetIPList(ctx context.Context) ([]network.IPNetwork, error) {
 	ret := _m.Called(ctx)
 
-	var r0 []network.IpNetwork
+	var r0 []network.IPNetwork
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context) ([]network.IpNetwork, error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context) ([]network.IPNetwork, error)); ok {
 		return rf(ctx)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context) []network.IpNetwork); ok {
+	if rf, ok := ret.Get(0).(func(context.Context) []network.IPNetwork); ok {
 		r0 = rf(ctx)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).([]network.IpNetwork)
+			r0 = ret.Get(0).([]network.IPNetwork)
 		}
 	}
 
@@ -55,11 +55,11 @@ func (_m *Service) GetIPList(ctx context.Context) ([]network.IpNetwork, error) {
 }
 
 // RemoveIP provides a mock function with given fields: ctx, _a1
-func (_m *Service) RemoveIP(ctx context.Context, _a1 network.IpNetwork) error {
+func (_m *Service) RemoveIP(ctx context.Context, _a1 network.IPNetwork) error {
 	ret := _m.Called(ctx, _a1)
 
 	var r0 error
-	if rf, ok := ret.Get(0).(func(context.Context, network.IpNetwork) error); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, network.IPNetwork) error); ok {
 		r0 = rf(ctx, _a1)
 	} else {
 		r0 = ret.Error(0)

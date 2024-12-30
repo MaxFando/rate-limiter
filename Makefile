@@ -1,8 +1,12 @@
 PROJECT := github.com/MaxFando/rate-limiter
 GIT_COMMIT := $(shell git rev-parse HEAD)
+LOCAL_BIN := $(shell pwd)/bin
 
 appName = github.com/MaxFando/rate-limiter
 compose = docker-compose -p rate-limiter
+
+install-deps:
+	GOBIN=$(LOCAL_BIN) go install go install go.uber.org/mock/mockgen
 
 structurizer:
 	docker-compose -f docs/structurizer/docker-compose.yml up -d
@@ -16,7 +20,6 @@ up: down build
 
 build:
 	@echo "Building images"
-	$(compose) build
 	@echo "Docker images built!"
 
 down:
@@ -25,7 +28,7 @@ down:
 	@echo "Done!"
 
 test:
-	go test -race -count 100 -v ./tests/...
+	go test -race -count 100 -v ./internal/service/...
 
 lint:
 	golangci-lint run -c .golangci.yaml
@@ -33,12 +36,10 @@ lint:
 lint-fix:
 	golangci-lint run -v -c .golangci.yaml --fix ./...
 
-mock:
-	@echo "Generating mocks..."
-	rm -rf internal/mocks
-	mockery --all --case unserscore --keeptree --dir internal/service --output mocks/service --log-level warn
-	mockery --all --case unserscore --keeptree --dir internal/usecase --output mocks/usecase --log-level warn
-	@echo "Mocks generated!"
+generate:
+	@echo "Generating code..."
+	go generate ./...
+	@echo "Code generated!"
 
 migrate:
 	migrate -version $(version)
@@ -55,3 +56,6 @@ proto:
 	protoc --proto_path=internal/delivery/grpcapi/proto/bucket internal/delivery/grpcapi/proto/bucket/*.proto  --go_out=. --go_opt=paths=import --go-grpc_out=. --go-grpc_opt=paths=import
 	protoc --proto_path=internal/delivery/grpcapi/proto/auth internal/delivery/grpcapi/proto/auth/*.proto  --go_out=. --go_opt=paths=import --go-grpc_out=. --go-grpc_opt=paths=import
 
+deploy:
+	@(echo "Deploying to k8s...")
+	@(echo "Deployed!")

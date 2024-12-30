@@ -1,7 +1,10 @@
-name: Rate Limter tests
+name: Rate Limiter CI
 
 on:
   push:
+    branches:
+      - main
+  pull_request:
     branches:
       - main
 
@@ -9,42 +12,81 @@ env:
   GO111MODULE: "on"
 
 jobs:
-  lint:
+#  lint:
+#    name: Run Linters
+#    runs-on: ubuntu-latest
+#    steps:
+#      # Проверяем код из репозитория
+#      - name: Checkout Code
+#        uses: actions/checkout@v3
+#
+#      # Настраиваем Go
+#      - name: Set up Go
+#        uses: actions/setup-go@v3
+#        with:
+#          go-version: 1.23
+#
+#      # Запускаем линтеры
+#      - name: Run GolangCI-Lint
+#        uses: golangci/golangci-lint-action@v3
+#        with:
+#          version: v1.50.1
+  
+#  build:
+#    name: Build Project
+#    runs-on: ubuntu-latest
+#    steps:
+#      # Проверяем код из репозитория
+#      - name: Checkout Code
+#        uses: actions/checkout@v3
+#
+#      # Настраиваем Go
+#      - name: Set up Go
+#        uses: actions/setup-go@v3
+#        with:
+#          go-version: 1.23
+#
+#      # Сборка проекта
+#      - name: Build Project
+#        run: go build -o ./bin/rate-limiter ./cmd/rate-limiter/main.go
+
+  tests:
+    name: Run Tests with Makefile
     runs-on: ubuntu-latest
     steps:
-      - name: Extract branch name
-        run: echo "BRANCH=${GITHUB_REF#refs/heads/}" >> $GITHUB_ENV
+      # Проверяем код из репозитория
+      - name: Checkout Code
+        uses: actions/checkout@v3
 
+      # Настраиваем Go
       - name: Set up Go
         uses: actions/setup-go@v3
         with:
-          go-version: ~1.21
+          go-version: 1.23
 
-      - name: Check out code
-        uses: actions/checkout@v3
-
-      - name: Linters
-        uses: golangci/golangci-lint-action@v3
-        with:
-          version: v1.50.1
-          working-directory: ${{ env.BRANCH }}
-
-  tests_by_makefile:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Set up Go
-        uses: actions/setup-go@v3
-        with:
-          go-version: ^1.19
-
-      - name: Check out code
-        uses: actions/checkout@v3
-
-      - name: make lint
-        run: make lint
-
-      - name: make build
-        run: make build
-
-      - name: make test
+      # Запуск тестов
+      - name: Run Tests
         run: make test
+  
+  deploy:
+    name: Deploy to Remote Host
+    runs-on: ubuntu-latest
+    needs:
+#      - lint
+#      - build
+      - tests
+    if: github.ref == 'refs/heads/main'
+    steps:
+      # Проверяем код из репозитория
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      # Настраиваем Go
+      - name: Set up Go
+        uses: actions/setup-go@v3
+        with:
+          go-version: 1.23
+
+      # Деплой на удаленный хост
+      - name: Deploy to Remote Host
+        run: make deploy

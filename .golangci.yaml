@@ -13,12 +13,10 @@ linters:
   enable:
     - asciicheck
     - bodyclose
-    - deadcode
     - dogsled
     - durationcheck
     - errorlint
     - exhaustive
-    - exportloopref
     - funlen
     - gocognit
     - goconst
@@ -32,7 +30,6 @@ linters:
     - goprintffuncname
     - gosec
     - govet
-    - ifshort
     - importas
     - ineffassign
     - lll
@@ -47,7 +44,6 @@ linters:
     - rowserrcheck
     - sqlclosecheck
     - staticcheck
-    - structcheck
     - stylecheck
     - tagliatelle
     - thelper
@@ -55,6 +51,5 @@ linters:
     - typecheck
     - unconvert
     - unused
-    - varcheck
     - wastedassign
     - whitespace
